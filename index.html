@@ -1,4 +1,4 @@
-       ```html
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -67,7 +67,7 @@
             overflow-x: hidden;
         }
 
-        /* Ambient floating water bubbles styling */
+        /* Ambient floating water/soap bubbles styling */
         .bubble-container {
             position: absolute;
             top: 0;
@@ -82,8 +82,8 @@
         .bubble {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(191, 231, 240, 0.3) 60%, rgba(90, 138, 179, 0.2));
-            box-shadow: inset -2px -2px 6px rgba(90, 138, 179, 0.2), inset 2px 2px 6px rgba(255, 255, 255, 0.9);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), rgba(191, 231, 240, 0.35) 60%, rgba(90, 138, 179, 0.2));
+            box-shadow: inset -2px -2px 6px rgba(90, 138, 179, 0.2), inset 2px 2px 6px rgba(255, 255, 255, 0.95);
             animation: floatUp linear infinite;
         }
 
@@ -93,39 +93,33 @@
                 opacity: 0;
             }
             20% {
-                opacity: 0.6;
+                opacity: 0.65;
             }
             80% {
-                opacity: 0.6;
+                opacity: 0.65;
             }
             100% {
-                transform: translateY(-800px) scale(1.1) rotate(360deg);
+                transform: translateY(-850px) scale(1.1) rotate(360deg);
                 opacity: 0;
             }
         }
 
         /* Glassmorphism background */
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
             border: 1px solid #DCE5EC;
         }
 
-        .glass-card-blue {
-            background: rgba(229, 241, 250, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid #C9D6E1;
-        }
-
-        /* Hero shape image masks */
+        /* Hero shape circular bubble masks matching UI reference image */
         .hero-img-main {
-            border-radius: 120px 40px 120px 40px;
+            border-radius: 50%;
         }
         .hero-img-sub1 {
             border-radius: 50%;
         }
         .hero-img-sub2 {
-            border-radius: 40px 100px 40px 100px;
+            border-radius: 50%;
         }
 
         /* Custom scrollbar */
@@ -161,7 +155,7 @@
 </head>
 <body class="bg-white text-navy antialiased selection:bg-lexoblue selection:text-white">
 
-    <!-- NAVIGATION BAR -->
+    <!-- MAIN NAVIGATION BAR -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-lexogrey-border transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -176,12 +170,12 @@
                 </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <button onclick="switchTab('home')" id="nav-home" class="nav-link active text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">HOME</button>
-                <button onclick="switchTab('services')" id="nav-services" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">SERVICES</button>
-                <button onclick="switchTab('about')" id="nav-about" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">ABOUT</button>
-                <button onclick="switchTab('contact')" id="nav-contact" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">CONTACT</button>
+            <!-- Desktop Navigation Links (Exact 4 main tabs) -->
+            <nav class="hidden md:flex items-center space-x-10">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-link active text-sm font-semibold tracking-wider text-navy hover:text-lexoblue transition-colors py-1 uppercase">HOME</button>
+                <button onclick="switchTab('services')" id="nav-services" class="nav-link text-sm font-semibold tracking-wider text-navy hover:text-lexoblue transition-colors py-1 uppercase">SERVICES</button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-link text-sm font-semibold tracking-wider text-navy hover:text-lexoblue transition-colors py-1 uppercase">ABOUT</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-link text-sm font-semibold tracking-wider text-navy hover:text-lexoblue transition-colors py-1 uppercase">CONTACT</button>
             </nav>
 
             <!-- CTA Button -->
@@ -213,7 +207,7 @@
     <!-- MAIN CONTENT AREA WITH TAB ROUTING -->
     <main class="relative min-h-screen">
         
-        <!-- Ambient Water Bubbles Layer -->
+        <!-- Ambient Water & Soap Bubbles Background -->
         <div class="bubble-container" id="bubbles"></div>
 
         <!-- ========================================================================= -->
@@ -234,15 +228,15 @@
                                 <span class="text-xs font-bold tracking-wider text-lexoblue uppercase">Clean Spaces, Healthy Places</span>
                             </div>
 
-                            <!-- Main Headline -->
+                            <!-- Main Headline (Exact placeholder retained per instructions) -->
                             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-tight">
-                                Freshness & Care, <br>
+                                Spotless care, <br>
                                 <span class="text-lexoblue">Everywhere.</span>
                             </h1>
 
                             <!-- Description -->
                             <p class="text-base sm:text-lg text-navy-light font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                                LEXO CARE provides high-standard professional cleaning and hospitality solutions for homes, businesses, and property spaces. Freshness, hygiene, and genuine care in every detail.
+                                LEXO CARE provides professional cleaning and hospitality services that ensure a cleaner, safer, and more comfortable environment for your homes and businesses.
                             </p>
 
                             <!-- CTAs -->
@@ -255,63 +249,44 @@
                                     <span>Get a Quote</span>
                                 </button>
                             </div>
-
-                            <!-- Value badges -->
-                            <div class="pt-6 border-t border-lexogrey-border grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                    <span class="block text-xl font-extrabold text-navy">100%</span>
-                                    <span class="text-xs text-lexogrey-soft">Quality Assured</span>
-                                </div>
-                                <div>
-                                    <span class="block text-xl font-extrabold text-navy">Vetted</span>
-                                    <span class="text-xs text-lexogrey-soft">Trained Staff</span>
-                                </div>
-                                <div>
-                                    <span class="block text-xl font-extrabold text-navy">Cleaner</span>
-                                    <span class="text-xs text-lexogrey-soft">Care Priority</span>
-                                </div>
-                            </div>
                         </div>
 
-                        <!-- Hero Right Visual Composition (Matching reference layout) -->
+                        <!-- Hero Right Visual Composition (Circular Bubble Masks from Reference Image) -->
                         <div class="lg:col-span-6 relative flex justify-center items-center">
-                            <div class="relative w-full max-w-lg aspect-square">
+                            <div class="relative w-full max-w-md aspect-square">
                                 
-                                <!-- Soft Backdrop Circle -->
+                                <!-- Soft Backdrop Glow -->
                                 <div class="absolute inset-0 bg-gradient-to-tr from-accent-aqua/40 to-ice-sky/60 rounded-full blur-2xl transform scale-90"></div>
 
-                                <!-- Main Hero Image Frame -->
-                                <div class="absolute inset-x-4 top-0 bottom-12 overflow-hidden shadow-2xl border-4 border-white hero-img-main bg-ice">
+                                <!-- Main Hero Image Frame (Circular Mask) -->
+                                <div class="absolute inset-x-8 top-0 bottom-8 overflow-hidden shadow-2xl border-4 border-white hero-img-main bg-ice">
                                     <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" 
-                                         alt="LEXO CARE Professional Cleaning" 
-                                         class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                                         onerror="this.src='https://placehold.co/800x800/E5F1FA/243247?text=LEXO+CARE+Professional+Staff'">
+                                         alt="LEXO CARE Professional Staff" 
+                                         class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700">
                                 </div>
 
-                                <!-- Supporting Floating Oval Image 1 -->
-                                <div class="absolute -top-4 -right-2 w-36 h-36 border-4 border-white shadow-xl overflow-hidden hero-img-sub1 bg-white">
+                                <!-- Supporting Circular Floating Image 1 -->
+                                <div class="absolute -top-2 -right-2 w-36 h-36 border-4 border-white shadow-xl overflow-hidden hero-img-sub1 bg-white">
                                     <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=400&q=80" 
-                                         alt="Detailed Surface Cleaning" 
-                                         class="w-full h-full object-cover"
-                                         onerror="this.src='https://placehold.co/400x400/E5F1FA/243247?text=Detail+Care'">
+                                         alt="Sanitized Surface Care" 
+                                         class="w-full h-full object-cover">
                                 </div>
 
-                                <!-- Supporting Floating Image 2 -->
-                                <div class="absolute -bottom-2 -left-2 w-44 h-36 border-4 border-white shadow-xl overflow-hidden hero-img-sub2 bg-white">
+                                <!-- Supporting Circular Floating Image 2 -->
+                                <div class="absolute bottom-2 -left-4 w-40 h-40 border-4 border-white shadow-xl overflow-hidden hero-img-sub2 bg-white">
                                     <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=500&q=80" 
-                                         alt="Hospitality Support" 
-                                         class="w-full h-full object-cover"
-                                         onerror="this.src='https://placehold.co/500x300/E5F1FA/243247?text=Hospitality'">
+                                         alt="Hospitality Service" 
+                                         class="w-full h-full object-cover">
                                 </div>
 
-                                <!-- Decorative Bubble Badge -->
-                                <div class="absolute bottom-6 right-6 glass-card px-5 py-3 rounded-2xl shadow-lg flex items-center space-x-3 border border-accent-aqua">
-                                    <div class="w-10 h-10 rounded-full bg-accent-teal/20 flex items-center justify-center text-lexoblue">
-                                        <i class="fa-solid fa-sparkles text-lg"></i>
+                                <!-- Glass Badge -->
+                                <div class="absolute bottom-6 right-2 glass-card px-4 py-2.5 rounded-2xl shadow-lg flex items-center space-x-2 border border-accent-aqua">
+                                    <div class="w-8 h-8 rounded-full bg-accent-teal/20 flex items-center justify-center text-lexoblue">
+                                        <i class="fa-solid fa-sparkles text-sm"></i>
                                     </div>
                                     <div>
                                         <p class="text-xs font-bold text-navy">Fresh & Sanitized</p>
-                                        <p class="text-[10px] text-lexogrey-soft">Eco-conscious practices</p>
+                                        <p class="text-[10px] text-lexogrey-soft">Pure care standard</p>
                                     </div>
                                 </div>
 
@@ -328,14 +303,14 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Core Offerings</span>
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">What We Offer</span>
                         <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">What We Do</h2>
                         <p class="text-navy-light text-base mt-2">
-                            LEXO CARE delivers specialized cleaning and hospitality support crafted for precision, comfort, and peace of mind.
+                            LEXO CARE provides professional cleaning and hospitality services across four primary operational areas.
                         </p>
                     </div>
 
-                    <!-- 4 Visual Cards Grid -->
+                    <!-- 4 Main Areas Visual Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         
                         <!-- Residential Card -->
@@ -346,7 +321,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-navy mb-2">Residential</h3>
                                 <p class="text-sm text-navy-light leading-relaxed">
-                                    Deep home cleaning, routine maintenance, and pristine living spaces for families.
+                                    Pristine home environments, deep cleaning, and daily household upkeep.
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
@@ -363,7 +338,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-navy mb-2">Commercial</h3>
                                 <p class="text-sm text-navy-light leading-relaxed">
-                                    Offices, retail hubs, and corporate facilities maintained with quiet professionalism.
+                                    Offices, retail spaces, and corporate environments kept hygienic and presentable.
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
@@ -380,7 +355,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-navy mb-2">Specialized</h3>
                                 <p class="text-sm text-navy-light leading-relaxed">
-                                    Post-construction cleanup, deep sanitization, carpet, and glass treatment.
+                                    Post-construction cleaning, carpet treatments, and detailed glass sanitation.
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
@@ -397,7 +372,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-navy mb-2">Hospitality</h3>
                                 <p class="text-sm text-navy-light leading-relaxed">
-                                    Hotels, serviced apartments, event venues, and short-term rental support.
+                                    Hotels, short-term rental turnovers, and specialized event support.
                                 </p>
                             </div>
                             <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
@@ -411,22 +386,22 @@
             </section>
 
 
-            <!-- SECTION 3: OUR SERVICES (5 Categories) -->
+            <!-- SECTION 3: OUR SERVICES (5 Core Categories) -->
             <section class="py-16 bg-ice-sky/40 border-y border-lexogrey-border">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
-                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Service Categories</span>
-                            <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Services Tailored To You</h2>
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Service Outline</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Our Services</h2>
                         </div>
                         <button onclick="switchTab('services')" class="mt-4 md:mt-0 text-sm font-bold text-lexoblue hover:text-navy transition-colors flex items-center space-x-2">
-                            <span>Explore Full Details</span>
+                            <span>View Full Details on Services Page</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
 
-                    <!-- 5 Service Row Cards -->
+                    <!-- 5 Service Categories -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         
                         <!-- 1. Residential Cleaning -->
@@ -435,11 +410,7 @@
                                 <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">01</div>
                                 <h3 class="text-lg font-bold text-navy">Residential Cleaning</h3>
                             </div>
-                            <p class="text-sm text-navy-light mb-4">Comprehensive house cleaning, apartments, kitchens, bathrooms, and deep dusting.</p>
-                            <ul class="text-xs text-navy-light space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Deep & Routine Cleaning</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Kitchen & Appliance Care</li>
-                            </ul>
+                            <p class="text-sm text-navy-light">For homes, apartments, kitchens, and routine room maintenance.</p>
                         </div>
 
                         <!-- 2. Commercial Cleaning -->
@@ -448,11 +419,7 @@
                                 <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">02</div>
                                 <h3 class="text-lg font-bold text-navy">Commercial Cleaning</h3>
                             </div>
-                            <p class="text-sm text-navy-light mb-4">Professional workplace maintenance ensuring clean, hygienic, and productive spaces.</p>
-                            <ul class="text-xs text-navy-light space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Offices & Retail Outlets</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Daily or Scheduled Visits</li>
-                            </ul>
+                            <p class="text-sm text-navy-light">For businesses, corporate offices, and commercial facilities.</p>
                         </div>
 
                         <!-- 3. Specialized Cleaning -->
@@ -461,11 +428,7 @@
                                 <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">03</div>
                                 <h3 class="text-lg font-bold text-navy">Specialized Cleaning</h3>
                             </div>
-                            <p class="text-sm text-navy-light mb-4">Detailed treatments for post-construction, move-in/out, glass, and upholstery.</p>
-                            <ul class="text-xs text-navy-light space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Post-Renovation Polish</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Deep Furniture Care</li>
-                            </ul>
+                            <p class="text-sm text-navy-light">For detailed cleaning needs like post-construction and move-in prep.</p>
                         </div>
 
                         <!-- 4. Hospitality Services -->
@@ -474,11 +437,7 @@
                                 <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">04</div>
                                 <h3 class="text-lg font-bold text-navy">Hospitality Services</h3>
                             </div>
-                            <p class="text-sm text-navy-light mb-4">Bespoke staffing support for boutique hotels, holiday homes, and VIP events.</p>
-                            <ul class="text-xs text-navy-light space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Airbnb Turnover & Housekeeping</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Linen & Amenity Setup</li>
-                            </ul>
+                            <p class="text-sm text-navy-light">For hospitality venues, Airbnb rentals, and property support.</p>
                         </div>
 
                         <!-- 5. Hourly Cleaning -->
@@ -487,22 +446,18 @@
                                 <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">05</div>
                                 <h3 class="text-lg font-bold text-navy">Hourly Cleaning</h3>
                             </div>
-                            <p class="text-sm text-navy-light mb-4">Flexible, on-demand assistance for general chores and customized priorities.</p>
-                            <ul class="text-xs text-navy-light space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Minimum 3-Hour Booking</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Custom Task Checklist</li>
-                            </ul>
+                            <p class="text-sm text-navy-light">Flexible general cleaning and customized task assistance.</p>
                         </div>
 
-                        <!-- Quick Quote Teaser Box -->
+                        <!-- Fast Quote CTA Teaser -->
                         <div class="bg-gradient-to-br from-lexoblue to-navy text-white p-6 rounded-3xl flex flex-col justify-between shadow-lg">
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-wider text-accent-aqua block mb-2">Fast Booking</span>
-                                <h3 class="text-xl font-extrabold mb-2">Need a custom plan?</h3>
-                                <p class="text-xs text-white/80">Tell us what you need and we will create a tailored package for your space.</p>
+                                <h3 class="text-xl font-extrabold mb-1">Looking for a quote?</h3>
+                                <p class="text-xs text-white/80">Get a custom quote tailored to your exact space dimensions.</p>
                             </div>
-                            <button onclick="scrollToQuote()" class="mt-6 w-full bg-white text-navy font-bold text-xs py-3 rounded-full hover:bg-ice transition-colors">
-                                Get Custom Price
+                            <button onclick="scrollToQuote()" class="mt-4 w-full bg-white text-navy font-bold text-xs py-3 rounded-full hover:bg-ice transition-colors">
+                                Request Quote Now
                             </button>
                         </div>
 
@@ -511,19 +466,19 @@
             </section>
 
 
-            <!-- SECTION 4: WHY CHOOSE LEXO CARE -->
+            <!-- SECTION 4: WHY CHOOSE LEXO CARE (Including Cleaner Care) -->
             <section class="py-16 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <div class="text-center max-w-3xl mx-auto mb-14">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Our Distinction</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Why Choose LEXO CARE</h2>
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Our Difference</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Why Choose LEXO CARE?</h2>
                         <p class="text-navy-light text-base mt-2">
-                            We don't just clean spaces—we uplift standards with professional equipment, reliable routines, and genuine human respect.
+                            We go beyond standard cleaning—we deliver peace of mind through trained teams and standard care.
                         </p>
                     </div>
 
-                    <!-- 6 Grid Items -->
+                    <!-- 6 Defined Points -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         
                         <!-- Point 1 -->
@@ -533,7 +488,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-navy mb-1">Trained Professionals</h3>
-                                <p class="text-sm text-navy-light leading-relaxed">Vetted, background-checked staff trained in modern cleaning protocols and hygiene safety.</p>
+                                <p class="text-sm text-navy-light leading-relaxed">Expert team delivering consistent quality and rigorous safety standards.</p>
                             </div>
                         </div>
 
@@ -544,7 +499,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-navy mb-1">Reliable Service</h3>
-                                <p class="text-sm text-navy-light leading-relaxed">Punctual teams, consistent quality standards, and smooth booking experiences every single time.</p>
+                                <p class="text-sm text-navy-light leading-relaxed">Punctual visits, count-on-us consistency, every single time.</p>
                             </div>
                         </div>
 
@@ -555,7 +510,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-navy mb-1">Quality Standards</h3>
-                                <p class="text-sm text-navy-light leading-relaxed">Inspected workflows, eco-friendly supplies, and detailed checklists for total reassurance.</p>
+                                <p class="text-sm text-navy-light leading-relaxed">Inspected checklists ensuring deep hygiene across every corner.</p>
                             </div>
                         </div>
 
@@ -566,7 +521,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-navy mb-1">Flexible Solutions</h3>
-                                <p class="text-sm text-navy-light leading-relaxed">One-time deep cleans, recurring schedules, or custom hourly bookings built around your life.</p>
+                                <p class="text-sm text-navy-light leading-relaxed">Custom schedules tailored to fit your personal or business routines.</p>
                             </div>
                         </div>
 
@@ -577,11 +532,11 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-navy mb-1">Professional Equipment</h3>
-                                <p class="text-sm text-navy-light leading-relaxed">Industrial-grade vacuums, micro-fiber tech, and safe, effective sanitation agents.</p>
+                                <p class="text-sm text-navy-light leading-relaxed">Modern tools and safe, eco-conscious cleaning products.</p>
                             </div>
                         </div>
 
-                        <!-- Point 6 (SPECIAL BRAND HIGHLIGHT: Cleaner Care) -->
+                        <!-- Point 6 (Cleaner Care) -->
                         <div class="flex items-start space-x-4 bg-gradient-to-r from-ice-sky/60 to-white p-4 rounded-2xl border border-lexoblue/20">
                             <div class="w-12 h-12 rounded-2xl bg-lexoblue flex-shrink-0 flex items-center justify-center text-white shadow-sm">
                                 <i class="fa-solid fa-heart text-xl"></i>
@@ -591,7 +546,7 @@
                                     <h3 class="text-lg font-bold text-navy">Cleaner Care</h3>
                                     <span class="bg-lexoblue text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Brand Core</span>
                                 </div>
-                                <p class="text-sm text-navy-light leading-relaxed mt-1">We honor our team with fair wages, modern safety equipment, and standard care—because valued workers deliver exceptional results.</p>
+                                <p class="text-sm text-navy-light leading-relaxed mt-1">We value the people providing the service, not just the customer. Fair treatment creates exceptional care.</p>
                             </div>
                         </div>
 
@@ -600,22 +555,22 @@
             </section>
 
 
-            <!-- SECTION 5: ABOUT LEXO CARE (SHORT BRIEF) -->
+            <!-- SECTION 5: ABOUT LEXO CARE (Brief 2-3 Line Summary) -->
             <section class="py-16 bg-ice/50 border-t border-lexogrey-border">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-lexogrey-border shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-lexogrey-border shadow-soft flex flex-col md:flex-row items-center justify-between gap-8">
                         
-                        <div class="lg:col-span-8 space-y-4">
-                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Who We Are</span>
-                            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">We Care About Your Space & The People Who Serve It</h2>
+                        <div class="space-y-3 max-w-3xl">
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">About Us</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">We Care About Your Space</h2>
                             <p class="text-base text-navy-light leading-relaxed">
-                                LEXO CARE was created to re-define cleaning and hospitality services. We believe that clean environments inspire better living and working. By combining strict quality control with genuine worker respect, we bring dependable, high-caliber service to every door.
+                                LEXO CARE is a trusted name in professional cleaning and hospitality services. Our purpose is to create cleaner, healthier, and more welcoming spaces for every client while taking genuine care of our workforce.
                             </p>
                         </div>
 
-                        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+                        <div class="flex-shrink-0">
                             <button onclick="switchTab('about')" class="bg-navy hover:bg-navy-dark text-white font-semibold px-8 py-4 rounded-full transition-all text-sm flex items-center space-x-3">
-                                <span>Read Our Story</span>
+                                <span>Read Full Story</span>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
                             </button>
                         </div>
@@ -628,7 +583,7 @@
 
 
         <!-- ========================================================================= -->
-        <!-- TAB 2: SERVICES DETAILED VIEW -->
+        <!-- TAB 2: SERVICES PAGE VIEW ("What can I book?") -->
         <!-- ========================================================================= -->
         <div id="page-services" class="tab-page hidden transition-opacity duration-300">
             
@@ -636,50 +591,40 @@
             <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">What Can I Book?</span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Services & Offerings</h1>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Services & Categories</h1>
                     <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
-                        Choose from 5 simplified categories tailored to your home, workspace, or commercial operations.
+                        Select from our 5 primary service categories designed for every environment.
                     </p>
                 </div>
             </section>
 
-            <!-- Detailed Categories Grid -->
-            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <!-- 5 Categories Grid -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                 
                 <!-- Category 1: Residential -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
                     <div class="lg:col-span-5">
                         <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Residential Cleaning" class="rounded-2xl w-full h-64 object-cover">
                     </div>
-                    <div class="lg:col-span-7 space-y-4">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">For Homes</span>
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">RESIDENTIAL</span>
                         <h2 class="text-2xl font-bold text-navy">Residential Cleaning</h2>
+                        <p class="text-sm font-semibold text-lexoblue">For homes.</p>
                         <p class="text-sm text-navy-light leading-relaxed">
-                            From routine maintenance to complete deep cleansing, we ensure your living space is continuous, spotless, and safe for your family.
+                            Comprehensive home cleaning solutions ranging from routine tidying to deep kitchen and bathroom sanitation.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Bedroom & Living Rooms</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Kitchen & Cabinet Care</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Bathroom Disinfection</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Dusting & Vacuuming</span>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Category 2: Commercial -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
-                    <div class="lg:col-span-7 space-y-4 order-2 lg:order-1">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">For Businesses</span>
+                    <div class="lg:col-span-7 space-y-3 order-2 lg:order-1">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">COMMERCIAL</span>
                         <h2 class="text-2xl font-bold text-navy">Commercial Cleaning</h2>
+                        <p class="text-sm font-semibold text-lexoblue">For businesses.</p>
                         <p class="text-sm text-navy-light leading-relaxed">
-                            Keep your business premises spotless for employees and visiting clients. Custom cleaning schedules available daily, weekly, or after hours.
+                            Reliable office and commercial facility cleaning designed to maintain hygienic work areas for staff and clients.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Corporate Offices</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Retail & Showrooms</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> High-Touch Surface Care</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Common Areas & Lobbies</span>
-                        </div>
                     </div>
                     <div class="lg:col-span-5 order-1 lg:order-2">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Commercial Cleaning" class="rounded-2xl w-full h-64 object-cover">
@@ -691,35 +636,25 @@
                     <div class="lg:col-span-5">
                         <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=700&q=80" alt="Specialized Cleaning" class="rounded-2xl w-full h-64 object-cover">
                     </div>
-                    <div class="lg:col-span-7 space-y-4">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Detailed Care</span>
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">SPECIALIZED</span>
                         <h2 class="text-2xl font-bold text-navy">Specialized Cleaning</h2>
+                        <p class="text-sm font-semibold text-lexoblue">For detailed cleaning needs.</p>
                         <p class="text-sm text-navy-light leading-relaxed">
-                            Targeted cleaning solutions requiring technical attention, specialized solutions, and equipment.
+                            Focused treatments including post-renovation dust extraction, move-in/out prep, glass washing, and carpet care.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Post-Construction Dust Removal</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Move-In / Move-Out Prep</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Carpet & Sofa Shampoo</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Window & Glass Washing</span>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Category 4: Hospitality -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
-                    <div class="lg:col-span-7 space-y-4 order-2 lg:order-1">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Property Support</span>
+                    <div class="lg:col-span-7 space-y-3 order-2 lg:order-1">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">HOSPITALITY</span>
                         <h2 class="text-2xl font-bold text-navy">Hospitality Services</h2>
+                        <p class="text-sm font-semibold text-lexoblue">For hospitality & property support.</p>
                         <p class="text-sm text-navy-light leading-relaxed">
-                            Support services tailored for hotels, Airbnb short-term rentals, and event venues demanding five-star presentation standards.
+                            Turnover support for boutique hotels, short-term rentals, event venues, and serviced properties.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Guest Turnover & Bedding</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Amenity Restocking</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Event Setup & Clean Down</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Luxury Villa Care</span>
-                        </div>
                     </div>
                     <div class="lg:col-span-5 order-1 lg:order-2">
                         <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=700&q=80" alt="Hospitality Support" class="rounded-2xl w-full h-64 object-cover">
@@ -731,31 +666,25 @@
                     <div class="lg:col-span-5">
                         <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=700&q=80" alt="Hourly Cleaning" class="rounded-2xl w-full h-64 object-cover">
                     </div>
-                    <div class="lg:col-span-7 space-y-4">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Flexible Cleaning</span>
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">HOURLY</span>
                         <h2 class="text-2xl font-bold text-navy">Hourly Cleaning</h2>
+                        <p class="text-sm font-semibold text-lexoblue">Flexible general cleaning & assistance.</p>
                         <p class="text-sm text-navy-light leading-relaxed">
-                            Need a quick hand or specific chores done? Book flexible hourly helpers who follow your personalized priority list.
+                            On-demand helpers following your custom priority list for flexible household chores.
                         </p>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Laundry & Ironing</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Closet Organization</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> General Surface Wipe Down</span>
-                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Flexible Task Checklist</span>
-                        </div>
                     </div>
                 </div>
 
             </section>
 
-            <!-- Interactive Inclusion Comparison Section -->
+            <!-- What's Included vs What's Not Included -->
             <section class="py-16 bg-ice-sky/30 border-t border-lexogrey-border">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <div class="text-center mb-10">
-                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Clear Transparency</span>
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Scope Guidelines</span>
                         <h2 class="text-3xl font-extrabold text-navy mt-3">What’s Included & What’s Not</h2>
-                        <p class="text-sm text-navy-light mt-1">We believe in upfront clarity so you know exactly what to expect.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -767,12 +696,10 @@
                                 <span>What’s Included</span>
                             </div>
                             <ul class="space-y-3 text-sm text-navy-light">
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Standard eco-conscious cleaning detergents</li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Microfiber cloths & specialized mop systems</li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Dusting of accessible surfaces & light fixtures</li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Vacuuming & floor damp-mopping</li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Trash removal & liner replacement</li>
-                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Full staff inspection & quality checklist</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Standard eco-conscious detergents & equipment</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Microfiber cloths & surface sanitization</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Vacuuming, mopping & accessible surface dusting</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Waste liner replacement & trash disposal</li>
                             </ul>
                         </div>
 
@@ -783,11 +710,9 @@
                                 <span>What’s Not Included</span>
                             </div>
                             <ul class="space-y-3 text-sm text-navy-light">
-                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Exterior window cleaning above ground height</li>
-                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Hazardous or bio-hazard waste removal</li>
-                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Pest extermination (available on specialized quote)</li>
-                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Heavy furniture moving exceeding 25kg</li>
-                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Unsupervised personal financial item handling</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Exterior window washing above safe ground height</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Hazardous waste or specialized bio-cleaning</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Heavy furniture moving over 25kg</li>
                             </ul>
                         </div>
 
@@ -799,62 +724,66 @@
 
 
         <!-- ========================================================================= -->
-        <!-- TAB 3: ABOUT US VIEW -->
+        <!-- TAB 3: ABOUT US PAGE VIEW -->
         <!-- ========================================================================= -->
         <div id="page-about" class="tab-page hidden transition-opacity duration-300">
             
             <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">About Lexo</span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Redefining Service Standards</h1>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">About LEXO CARE</h1>
                     <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
-                        Built on precision, reliability, and human care.
+                        Clean spaces inspire better living. Cared-for teams create lasting trust.
                     </p>
                 </div>
             </section>
 
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 
-                <!-- Story section -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Our Approach & What Makes Lexo Different -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
                     <div class="lg:col-span-6 space-y-6">
-                        <h2 class="text-3xl font-extrabold text-navy">Our Story & Purpose</h2>
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-wider">Methodology</span>
+                            <h2 class="text-3xl font-extrabold text-navy">Our Approach</h2>
+                        </div>
                         <p class="text-base text-navy-light leading-relaxed">
-                            LEXO CARE was established to bring modern efficiency and high-grade hygiene to residential homes, commercial offices, and property management sectors.
+                            We believe that cleanliness is foundational to health, wellbeing, and focus. Our approach combines rigorous hygiene protocols with simple, transparent booking.
                         </p>
                         <p class="text-base text-navy-light leading-relaxed">
-                            We observed that conventional cleaning companies often compromised either on quality or on worker welfare. We chose a different route: prioritizing both. Clean spaces foster better health, focus, and comfort—and well-cared-for teams deliver unmatched service.
+                            Every cleaning session follows a structured quality checklist, utilizing safe, eco-conscious materials to protect both your property and the environment.
                         </p>
                     </div>
-                    <div class="lg:col-span-6">
-                        <div class="bg-ice-sky rounded-3xl p-8 border border-lexogrey-border">
-                            <h3 class="text-xl font-bold text-navy mb-4"><i class="fa-solid fa-compass text-lexoblue mr-2"></i> Our Core Philosophy</h3>
-                            <div class="space-y-4">
-                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
-                                    <h4 class="font-bold text-navy text-sm">Integrity & Respect</h4>
-                                    <p class="text-xs text-navy-light mt-1">Honest quotes, respectful interaction, and total safety inside your private premises.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
-                                    <h4 class="font-bold text-navy text-sm">Cleaner Care Focus</h4>
-                                    <p class="text-xs text-navy-light mt-1">Proper training, fair treatment, and health insurance for every LEXO team member.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
-                                    <h4 class="font-bold text-navy text-sm">Consistent Quality</h4>
-                                    <p class="text-xs text-navy-light mt-1">Standardized multi-point inspection protocols for total satisfaction.</p>
-                                </div>
+
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-wider">Distinction</span>
+                            <h2 class="text-3xl font-extrabold text-navy">What Makes Lexo Different</h2>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-ice p-5 rounded-2xl border border-lexogrey-border">
+                                <h3 class="font-bold text-navy text-base">Cleaner Care Principle</h3>
+                                <p class="text-xs text-navy-light mt-1">We treat our cleaners with the highest respect, fair wages, and proper equipment—because satisfied staff deliver superior work.</p>
+                            </div>
+                            <div class="bg-ice p-5 rounded-2xl border border-lexogrey-border">
+                                <h3 class="font-bold text-navy text-base">Uncompromising Standards</h3>
+                                <p class="text-xs text-navy-light mt-1">We don't cut corners. Inspections and background checks ensure total reliability.</p>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Short Brand Statement Box -->
-                <div class="bg-navy text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+                <div class="bg-navy text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-xl">
                     <div class="relative z-10 max-w-3xl mx-auto space-y-4">
                         <span class="text-xs font-bold uppercase tracking-widest text-accent-teal">Short Brand Statement</span>
-                        <blockquote class="text-2xl sm:text-3xl font-bold italic leading-snug">
+                        <blockquote class="text-2xl sm:text-3xl font-extrabold italic leading-snug">
                             "Clean spaces inspire better living. Cared-for teams create lasting trust."
                         </blockquote>
-                        <p class="text-xs text-ice-silver">LEXO CARE — Professional Cleaning & Hospitality</p>
+                        <p class="text-xs text-ice-silver">LEXO CARE — Modern Cleaning & Hospitality</p>
                     </div>
                 </div>
 
@@ -870,10 +799,10 @@
             
             <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Get In Touch</span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">We're Here To Help</h1>
+                    <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Contact Us</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Contact Introduction</h1>
                     <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
-                        Reach out for instant quotes, service inquiries, or custom scheduling.
+                        Connect with our team directly via WhatsApp, Phone, Email, or LinkedIn.
                     </p>
                 </div>
             </section>
@@ -885,9 +814,6 @@
                     <!-- Contact Channels -->
                     <div class="lg:col-span-5 space-y-6">
                         <h2 class="text-2xl font-bold text-navy">Direct Communication</h2>
-                        <p class="text-sm text-navy-light">
-                            Connect directly through WhatsApp, Phone, or Email for rapid assistance.
-                        </p>
 
                         <!-- Channels List -->
                         <div class="space-y-4">
@@ -898,7 +824,7 @@
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-lexogrey-soft block">Chat via WhatsApp</span>
+                                    <span class="text-xs text-lexogrey-soft block">WhatsApp</span>
                                     <span class="text-sm font-bold text-navy">+974 4400 0000</span>
                                 </div>
                             </a>
@@ -909,7 +835,7 @@
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-lexogrey-soft block">Direct Phone Line</span>
+                                    <span class="text-xs text-lexogrey-soft block">Phone</span>
                                     <span class="text-sm font-bold text-navy">+974 4400 0000</span>
                                 </div>
                             </a>
@@ -920,7 +846,7 @@
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-lexogrey-soft block">Email Inquiries</span>
+                                    <span class="text-xs text-lexogrey-soft block">Email</span>
                                     <span class="text-sm font-bold text-navy">info@lexocare.com</span>
                                 </div>
                             </a>
@@ -931,66 +857,65 @@
                                     <i class="fa-brands fa-linkedin-in"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-lexogrey-soft block">LinkedIn Corporate Page</span>
-                                    <span class="text-sm font-bold text-navy">LEXO CARE Official</span>
+                                    <span class="text-xs text-lexogrey-soft block">LinkedIn</span>
+                                    <span class="text-sm font-bold text-navy">LEXO CARE</span>
                                 </div>
                             </a>
 
                         </div>
 
-                        <!-- Service Area Info -->
+                        <!-- Location / Service Area -->
                         <div class="p-6 bg-ice rounded-2xl border border-lexogrey-border">
-                            <h3 class="text-sm font-bold text-navy mb-2"><i class="fa-solid fa-location-dot text-lexoblue mr-2"></i> Service Area & Hours</h3>
+                            <h3 class="text-sm font-bold text-navy mb-2"><i class="fa-solid fa-location-dot text-lexoblue mr-2"></i> Location / Service Area</h3>
                             <p class="text-xs text-navy-light leading-relaxed">
-                                Serving residential homes, hotels, and commercial estates across the region. <br>
-                                <strong>Hours:</strong> Saturday – Thursday: 8:00 AM – 8:00 PM
+                                Serving residential homes, commercial estates, and hospitality spaces across the metropolitan region.
                             </p>
                         </div>
 
                     </div>
 
-                    <!-- Contact Form Column -->
+                    <!-- Contact / Service Request Form -->
                     <div class="lg:col-span-7">
                         <div class="bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
-                            <h2 class="text-2xl font-bold text-navy mb-2">Send Service Request</h2>
-                            <p class="text-xs text-navy-light mb-6">Fill out your requirements below and our scheduling team will respond within 2 hours.</p>
+                            <h2 class="text-2xl font-bold text-navy mb-2">Service Request Form</h2>
+                            <p class="text-xs text-navy-light mb-6">Send us your details and we will confirm your schedule within 2 hours.</p>
 
                             <form id="contact-page-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-navy mb-1">Your Full Name *</label>
-                                    <input type="text" required placeholder="e.g. Sarah Mansoor" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
+                                    <label class="block text-xs font-bold text-navy mb-1">Name *</label>
+                                    <input type="text" required placeholder="Your Full Name" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-xs font-bold text-navy mb-1">Email Address *</label>
+                                        <label class="block text-xs font-bold text-navy mb-1">Email *</label>
                                         <input type="email" required placeholder="name@domain.com" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-navy mb-1">Phone / Mobile *</label>
+                                        <label class="block text-xs font-bold text-navy mb-1">Phone *</label>
                                         <input type="tel" required placeholder="+974 5500 0000" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label class="block text-xs font-bold text-navy mb-1">Service Category Required *</label>
+                                    <label class="block text-xs font-bold text-navy mb-1">Service Required *</label>
                                     <select required class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
-                                        <option value="">Select Service Category...</option>
+                                        <option value="">Select Service...</option>
                                         <option value="residential">Residential Cleaning</option>
                                         <option value="commercial">Commercial Cleaning</option>
                                         <option value="specialized">Specialized Cleaning</option>
-                                        <option value="hospitality">Hospitality Support</option>
+                                        <option value="hospitality">Hospitality Services</option>
                                         <option value="hourly">Hourly Cleaning</option>
                                     </select>
                                 </div>
 
                                 <div>
-                                    <label class="block text-xs font-bold text-navy mb-1">Message / Space Details</label>
-                                    <textarea rows="4" placeholder="Tell us about your property size, preferred dates, or specific needs..." class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite"></textarea>
+                                    <label class="block text-xs font-bold text-navy mb-1">Message</label>
+                                    <textarea rows="4" placeholder="Space details or specific instructions..." class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite"></textarea>
                                 </div>
 
                                 <button type="submit" class="w-full bg-lexoblue hover:bg-lexoblue-hover text-white font-bold py-4 rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
-                                    <span>Send Service Request</span>
+                                    <span>Send Enquiry</span>
                                     <i class="fa-solid fa-paper-plane text-xs"></i>
                                 </button>
                             </form>
@@ -1016,7 +941,7 @@
                         <span class="text-xs font-bold tracking-widest text-accent-aqua uppercase bg-white/10 px-3 py-1 rounded-full">Get a Quote</span>
                         <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let’s Keep Your Space Spotless</h2>
                         <p class="text-sm text-ice-sky leading-relaxed">
-                            Tell us about your requirements and our team will get back to you with the best tailored solution.
+                            Tell us about your requirements and our team will get back to you with the best solution.
                         </p>
 
                         <!-- Direct WhatsApp Option -->
@@ -1030,46 +955,40 @@
                         </div>
                     </div>
 
-                    <!-- Right Form Box -->
+                    <!-- Right Form Box (Name, Email, Phone, Service Required, Message) -->
                     <div class="lg:col-span-7">
                         <div class="glass-card p-6 sm:p-8 rounded-3xl text-navy">
                             <form id="global-quote-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                     <div>
                                         <label class="block text-[11px] font-bold text-navy mb-1">Name *</label>
-                                        <input type="text" required placeholder="Your Name" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                        <input type="text" required placeholder="Name" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
                                     </div>
                                     <div>
                                         <label class="block text-[11px] font-bold text-navy mb-1">Email *</label>
-                                        <input type="email" required placeholder="Email Address" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                        <input type="email" required placeholder="Email" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
                                     </div>
                                     <div>
                                         <label class="block text-[11px] font-bold text-navy mb-1">Phone *</label>
-                                        <input type="tel" required placeholder="Phone Number" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-[11px] font-bold text-navy mb-1">Service Required *</label>
-                                        <select required class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
-                                            <option value="">Select Service...</option>
-                                            <option value="residential">Residential Cleaning</option>
-                                            <option value="commercial">Commercial Cleaning</option>
-                                            <option value="specialized">Specialized Cleaning</option>
-                                            <option value="hospitality">Hospitality Services</option>
-                                            <option value="hourly">Hourly Cleaning</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label class="block text-[11px] font-bold text-navy mb-1">Preferred Timing</label>
-                                        <input type="text" placeholder="e.g. Tomorrow Morning" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                        <input type="tel" required placeholder="Phone" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
                                     </div>
                                 </div>
 
                                 <div>
+                                    <label class="block text-[11px] font-bold text-navy mb-1">Service Required *</label>
+                                    <select required class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                        <option value="">Select Service Required...</option>
+                                        <option value="residential">Residential Cleaning</option>
+                                        <option value="commercial">Commercial Cleaning</option>
+                                        <option value="specialized">Specialized Cleaning</option>
+                                        <option value="hospitality">Hospitality Services</option>
+                                        <option value="hourly">Hourly Cleaning</option>
+                                    </select>
+                                </div>
+
+                                <div>
                                     <label class="block text-[11px] font-bold text-navy mb-1">Message</label>
-                                    <textarea rows="3" placeholder="Additional details or specific instructions..." class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white"></textarea>
+                                    <textarea rows="3" placeholder="Message details..." class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white"></textarea>
                                 </div>
 
                                 <button type="submit" class="w-full bg-lexoblue hover:bg-lexoblue-hover text-white font-bold text-xs py-3.5 rounded-full transition-all shadow-md flex items-center justify-center space-x-2">
@@ -1101,9 +1020,9 @@
                         <span class="text-xl font-extrabold tracking-tight text-white">LEXO CARE</span>
                     </div>
                     <p class="text-xs text-lexogrey-soft leading-relaxed max-w-sm">
-                        Professional cleaning and hospitality services you can trust. We deliver freshness, hygiene, and peace of mind with genuine care for customers and staff.
+                        Professional cleaning and hospitality services you can trust. We deliver freshness, hygiene, and peace of mind.
                     </p>
-                    <!-- Social icons -->
+                    <!-- Social media icons -->
                     <div class="flex items-center space-x-3 pt-2">
                         <a href="#" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-lexoblue flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-lexoblue flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-instagram"></i></a>
@@ -1120,13 +1039,12 @@
                         <li><button onclick="switchTab('about')" class="hover:text-lexoblue transition-colors">About Us</button></li>
                         <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Services</button></li>
                         <li><button onclick="switchTab('contact')" class="hover:text-lexoblue transition-colors">Contact</button></li>
-                        <li><button onclick="scrollToQuote()" class="hover:text-lexoblue transition-colors">Get a Quote</button></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Services -->
                 <div>
-                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Our Services</h4>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Services</h4>
                     <ul class="space-y-2 text-xs text-lexogrey-soft">
                         <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Residential Cleaning</button></li>
                         <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Commercial Cleaning</button></li>
@@ -1136,13 +1054,13 @@
                     </ul>
                 </div>
 
-                <!-- Col 4: Contact Details -->
+                <!-- Col 4: Contact Details & CR Info -->
                 <div>
-                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Contact Us</h4>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Contact</h4>
                     <ul class="space-y-3 text-xs text-lexogrey-soft">
                         <li class="flex items-center"><i class="fa-solid fa-phone text-lexoblue mr-2"></i> +974 4400 0000</li>
                         <li class="flex items-center"><i class="fa-solid fa-envelope text-lexoblue mr-2"></i> info@lexocare.com</li>
-                        <li class="flex items-center"><i class="fa-solid fa-location-dot text-lexoblue mr-2"></i> Commercial Reg: 123456</li>
+                        <li class="flex items-center"><i class="fa-solid fa-building text-lexoblue mr-2"></i> CR: 123456</li>
                     </ul>
                 </div>
 
@@ -1162,18 +1080,18 @@
     </footer>
 
 
-    <!-- CUSTOM MODAL TOAST FOR FORM SUBMISSIONS -->
+    <!-- MODAL CONFIRMATION TOAST FOR FORM SUBMISSIONS -->
     <div id="toast-modal" class="fixed inset-0 bg-navy/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center space-y-4 border border-lexogrey-border shadow-2xl">
             <div class="w-16 h-16 rounded-full bg-ice-sky text-lexoblue flex items-center justify-center mx-auto text-2xl">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="text-xl font-bold text-navy">Request Received!</h3>
+            <h3 class="text-xl font-bold text-navy">Enquiry Sent!</h3>
             <p class="text-xs text-navy-light leading-relaxed">
-                Thank you for contacting LEXO CARE. Our representative will reach out shortly to confirm your quote and booking details.
+                Thank you for contacting LEXO CARE. Our team will get back to you shortly with your quote details.
             </p>
             <button onclick="closeToast()" class="w-full bg-lexoblue text-white text-xs font-bold py-3 rounded-full hover:bg-lexoblue-hover transition-colors">
-                Back to Site
+                Close Window
             </button>
         </div>
     </div>
@@ -1183,81 +1101,59 @@
     <script>
         // 1. Tab Switching Functionality
         function switchTab(tabId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.tab-page');
-            pages.forEach(page => {
-                page.classList.add('hidden');
-            });
+            pages.forEach(page => page.classList.add('hidden'));
 
-            // Show selected page
             const activePage = document.getElementById('page-' + tabId);
-            if(activePage) {
-                activePage.classList.remove('hidden');
-            }
+            if(activePage) activePage.classList.remove('hidden');
 
-            // Update navbar active state
             const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
+            navLinks.forEach(link => link.classList.remove('active'));
 
             const currentNavLink = document.getElementById('nav-' + tabId);
-            if(currentNavLink) {
-                currentNavLink.classList.add('active');
-            }
+            if(currentNavLink) currentNavLink.classList.add('active');
 
-            // Scroll top smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // 2. Scroll to Quote section
         function scrollToQuote() {
-            // Ensure Home tab is active if quote section is accessed from homepage layout
             const quoteSection = document.getElementById('quote-section');
-            if(quoteSection) {
-                quoteSection.scrollIntoView({ behavior: 'smooth' });
-            }
+            if(quoteSection) quoteSection.scrollIntoView({ behavior: 'smooth' });
         }
 
         // 3. Mobile Navigation Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if(menu) {
-                menu.classList.toggle('hidden');
-            }
+            if(menu) menu.classList.toggle('hidden');
         }
 
-        // 4. Form Submission Handling (No alert box per rules)
+        // 4. Form Submission Handling
         function handleFormSubmit(event) {
             event.preventDefault();
             const modal = document.getElementById('toast-modal');
-            if(modal) {
-                modal.classList.remove('hidden');
-            }
+            if(modal) modal.classList.remove('hidden');
         }
 
         function closeToast() {
             const modal = document.getElementById('toast-modal');
-            if(modal) {
-                modal.classList.add('hidden');
-            }
+            if(modal) modal.classList.add('hidden');
         }
 
-        // 5. Generate Ambient Bubbles Effect dynamically
+        // 5. Ambient Soap/Water Bubbles Generator
         function createBubbles() {
             const container = document.getElementById('bubbles');
             if(!container) return;
 
-            const bubbleCount = 12;
+            const bubbleCount = 14;
             for (let i = 0; i < bubbleCount; i++) {
                 const bubble = document.createElement('div');
                 bubble.classList.add('bubble');
                 
-                // Randomize sizes, positions, speeds
-                const size = Math.random() * 40 + 15; // 15px to 55px
-                const left = Math.random() * 100; // 0% to 100%
-                const duration = Math.random() * 12 + 10; // 10s to 22s
-                const delay = Math.random() * 5; // 0s to 5s
+                const size = Math.random() * 45 + 15;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 12 + 10;
+                const delay = Math.random() * 5;
 
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
@@ -1269,11 +1165,9 @@
             }
         }
 
-        // Initialize on load
         window.onload = function() {
             createBubbles();
         };
     </script>
 </body>
 </html>
-```
