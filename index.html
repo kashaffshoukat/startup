@@ -1,823 +1,1279 @@
+       ```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraClean Qatar | Ultra-Luxury Pristine Hygiene & Deep Sanitization</title>
-    <!-- Tailwind CSS CDN -->
+    <title>LEXO CARE | Professional Cleaning & Hospitality Services</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        pristine: '#FFFFFF',
-                        snow: '#F8FAFC',
-                        skyFresh: '#00A8FF',
-                        cloudBlue: '#70C1FF',
-                        hydroIce: '#E0F2FE',
-                        dewMist: '#BAE6FD',
-                        oceanic: '#0C4A6E',
-                    },
                     fontFamily: {
-                        syne: ['Syne', 'sans-serif'],
-                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#243247',
+                            dark: '#1C2838',
+                            light: '#3F4C5C'
+                        },
+                        lexoblue: {
+                            DEFAULT: '#5A8AB3',
+                            hover: '#4D82AD',
+                            light: '#769EC0'
+                        },
+                        ice: {
+                            DEFAULT: '#F1F7FC',
+                            sky: '#E5F1FA',
+                            silver: '#C9D6E1'
+                        },
+                        accent: {
+                            teal: '#67C8D8',
+                            aqua: '#BFE7F0',
+                            beige: '#F5EEE8',
+                            lavender: '#E8EEFF'
+                        },
+                        lexogrey: {
+                            soft: '#8A96A3',
+                            border: '#DCE5EC',
+                            offwhite: '#FAFBFC'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(36, 50, 71, 0.05)',
+                        'hover': '0 20px 40px -10px rgba(90, 138, 179, 0.15)',
+                        'bubble': '0 8px 32px 0 rgba(103, 200, 216, 0.2)'
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Syne & Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* Custom Glassmorphism & Shimmer Effects */
-        .glass-panel {
-            backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(224, 242, 254, 0.6);
-            box-shadow: 0 10px 40px 0 rgba(0, 168, 255, 0.08);
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FFFFFF;
+            color: #243247;
+            overflow-x: hidden;
         }
-        .glass-card {
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 12px 35px 0 rgba(12, 74, 110, 0.06);
-        }
-        .liquid-text {
-            background: linear-gradient(135deg, #00A8FF 0%, #0284C7 50%, #0C4A6E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        canvas {
-            position: fixed;
+
+        /* Ambient floating water bubbles styling */
+        .bubble-container {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             pointer-events: none;
             z-index: 0;
         }
-        /* Marquee Animation */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(191, 231, 240, 0.3) 60%, rgba(90, 138, 179, 0.2));
+            box-shadow: inset -2px -2px 6px rgba(90, 138, 179, 0.2), inset 2px 2px 6px rgba(255, 255, 255, 0.9);
+            animation: floatUp linear infinite;
         }
-        .animate-marquee {
-            display: flex;
-            width: 200%;
-            animation: marquee 25s linear infinite;
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100px) scale(0.8) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.6;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-800px) scale(1.1) rotate(360deg);
+                opacity: 0;
+            }
         }
-        .animate-marquee:hover {
-            animation-play-state: paused;
+
+        /* Glassmorphism background */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid #DCE5EC;
         }
-        /* Custom Scrollbar */
+
+        .glass-card-blue {
+            background: rgba(229, 241, 250, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid #C9D6E1;
+        }
+
+        /* Hero shape image masks */
+        .hero-img-main {
+            border-radius: 120px 40px 120px 40px;
+        }
+        .hero-img-sub1 {
+            border-radius: 50%;
+        }
+        .hero-img-sub2 {
+            border-radius: 40px 100px 40px 100px;
+        }
+
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #F8FAFC;
+            background: #F1F7FC;
         }
         ::-webkit-scrollbar-thumb {
-            background: #70C1FF;
-            border-radius: 9999px;
+            background: #C9D6E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5A8AB3;
+        }
+
+        /* Active nav indicator */
+        .nav-link.active {
+            color: #5A8AB3;
+            font-weight: 700;
+        }
+        .nav-link.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #5A8AB3;
+            border-radius: 2px;
+            margin-top: 2px;
         }
     </style>
 </head>
-<body class="bg-snow text-oceanic font-jakarta overflow-x-hidden relative selection:bg-skyFresh selection:text-white">
+<body class="bg-white text-navy antialiased selection:bg-lexoblue selection:text-white">
 
-    <!-- Interactive HTML5 Canvas Bubble Physics Background -->
-    <canvas id="bubbleCanvas"></canvas>
-
-    <!-- 🔹 A. GLOBAL HEADER & NAVIGATION BAR -->
-    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-7xl glass-panel rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300">
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-skyFresh to-cloudBlue flex items-center justify-center text-white shadow-md shadow-skyFresh/30 group-hover:scale-105 transition-transform">
-                <i class="fa-solid fa-droplet text-lg"></i>
-            </div>
-            <div class="flex flex-col">
-                <span class="font-syne font-extrabold text-xl tracking-tight text-oceanic">AURA<span class="text-skyFresh">CLEAN</span></span>
-                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-semibold -mt-1">Qatar Luxury Hygiene</span>
-            </div>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex items-center gap-8 font-medium text-sm">
-            <a href="#services" class="hover:text-skyFresh transition-colors">Services</a>
-            <a href="#squeegee" class="hover:text-skyFresh transition-colors">Before & After</a>
-            <a href="#process" class="hover:text-skyFresh transition-colors">Sparkle Process</a>
-            <a href="#calculator" class="hover:text-skyFresh transition-colors">Estimator</a>
-            <a href="#testimonials" class="hover:text-skyFresh transition-colors">Reviews</a>
-        </div>
-
-        <!-- Action Button -->
-        <div class="flex items-center gap-3">
-            <a href="#calculator" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-skyFresh to-blue-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-skyFresh/25 hover:shadow-skyFresh/40 hover:scale-105 active:scale-95 transition-all">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Book A Clean</span>
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-lexogrey-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" onclick="switchTab('home')" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-lexoblue to-accent-teal flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-droplet text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-navy block leading-none">LEXO</span>
+                    <span class="text-xs font-semibold tracking-widest text-lexoblue block uppercase leading-tight">CARE</span>
+                </div>
             </a>
-            <!-- Mobile Menu Toggle -->
-            <button id="menuBtn" class="md:hidden text-oceanic text-xl p-2 focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-link active text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">HOME</button>
+                <button onclick="switchTab('services')" id="nav-services" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">SERVICES</button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">ABOUT</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-link text-sm font-semibold text-navy hover:text-lexoblue transition-colors py-1">CONTACT</button>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="scrollToQuote()" class="bg-lexoblue hover:bg-lexoblue-hover text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-sm hover:shadow-hover flex items-center space-x-2">
+                    <span>Get a Quote</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-navy hover:text-lexoblue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
-    </nav>
 
-    <!-- Mobile Drawer Menu -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 bg-oceanic/40 backdrop-blur-md hidden flex flex-col justify-center items-center gap-6 text-white text-xl font-syne">
-        <button id="closeMenu" class="absolute top-6 right-6 text-3xl"><i class="fa-solid fa-xmark"></i></button>
-        <a href="#services" class="mobile-link hover:text-skyFresh">Services</a>
-        <a href="#squeegee" class="mobile-link hover:text-skyFresh">Before & After</a>
-        <a href="#process" class="mobile-link hover:text-skyFresh">Sparkle Process</a>
-        <a href="#calculator" class="mobile-link hover:text-skyFresh">Estimator</a>
-        <a href="#testimonials" class="mobile-link hover:text-skyFresh">Reviews</a>
-        <a href="#calculator" class="mobile-link bg-skyFresh text-white px-8 py-3 rounded-full text-lg mt-4 shadow-xl">Book A Clean</a>
-    </div>
-
-    <!-- 🔹 B. HERO SECTION -->
-    <header class="relative pt-36 pb-20 md:pt-44 md:pb-32 px-6 overflow-hidden z-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Hero Text Content -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-xs font-semibold text-skyFresh border border-sky-200">
-                    <span class="w-2 h-2 rounded-full bg-skyFresh animate-ping"></span>
-                    Qatar's Premier 7-Star Hospitality Cleaning Standard
-                </div>
-                <h1 class="font-syne font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-                    From Dust to <span class="liquid-text">Pristine Sparkle.</span>
-                </h1>
-                <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal">
-                    Experience unmatched aquatic freshness and deep tactile sanitization crafted exclusively for luxury villas, penthouses, and corporate towers across Doha, The Pearl, and Lusail.
-                </p>
-                <!-- CTA buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                    <a href="#calculator" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-skyFresh to-blue-600 text-white rounded-2xl font-bold shadow-xl shadow-skyFresh/30 hover:scale-105 transition-all flex items-center justify-center gap-3">
-                        <span>Calculate & Reserve</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="#squeegee" class="w-full sm:w-auto px-8 py-4 glass-panel text-oceanic rounded-2xl font-bold hover:bg-white/90 transition-all flex items-center justify-center gap-3">
-                        <i class="fa-solid fa-eye text-skyFresh"></i>
-                        <span>See Squeegee Reveal</span>
-                    </a>
-                </div>
-                <!-- Live Trust Stats -->
-                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-sky-100/80">
-                    <div>
-                        <h4 class="font-syne font-bold text-2xl text-oceanic">500+</h4>
-                        <p class="text-xs text-slate-500">Luxury Homes Cleaned</p>
-                    </div>
-                    <div>
-                        <h4 class="font-syne font-bold text-2xl text-oceanic">100%</h4>
-                        <p class="text-xs text-slate-500">Eco-Friendly Solutions</p>
-                    </div>
-                    <div>
-                        <h4 class="font-syne font-bold text-2xl text-oceanic">4.9★</h4>
-                        <p class="text-xs text-slate-500">Client Satisfaction</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Visual Card -->
-            <div class="lg:col-span-5 relative">
-                <div class="relative mx-auto max-w-md lg:max-w-none rounded-[2.5rem] p-4 glass-panel shadow-2xl border border-white">
-                    <div class="relative rounded-[2rem] overflow-hidden group aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" alt="Luxury Villa Interior Qatar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-oceanic/70 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
-                            <span class="text-xs font-semibold uppercase tracking-widest text-sky-300">Featured Residence</span>
-                            <h3 class="font-syne font-bold text-xl">Qanat Quartier Penthouse, The Pearl</h3>
-                            <p class="text-xs text-slate-200 mt-1">Deep sanitization, marble crystallization & balcony glass hydro-shield.</p>
-                        </div>
-                    </div>
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -left-6 glass-card px-6 py-4 rounded-2xl shadow-xl flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-skyFresh/20 flex items-center justify-center text-skyFresh text-xl">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-slate-500 font-medium">Hospital Grade</p>
-                            <h5 class="font-syne font-bold text-sm text-oceanic">Non-Toxic Disinfection</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-lexogrey-border px-6 py-4 space-y-4">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left text-base font-semibold text-navy py-2 border-b border-ice-sky">HOME</button>
+            <button onclick="switchTab('services'); toggleMobileMenu();" class="block w-full text-left text-base font-semibold text-navy py-2 border-b border-ice-sky">SERVICES</button>
+            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left text-base font-semibold text-navy py-2 border-b border-ice-sky">ABOUT</button>
+            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left text-base font-semibold text-navy py-2 border-b border-ice-sky">CONTACT</button>
+            <button onclick="scrollToQuote(); toggleMobileMenu();" class="w-full mt-2 bg-lexoblue text-white font-semibold py-3 rounded-full text-center block">Get a Quote</button>
         </div>
     </header>
 
-    <!-- 🔹 C. INFINITE FOAM-SUDS MARQUEE -->
-    <section class="py-6 bg-hydroIce/50 border-y border-sky-100/60 overflow-hidden relative z-10">
-        <div class="animate-marquee flex items-center gap-12 whitespace-nowrap">
-            <!-- Marquee items repeated for infinite effect -->
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-sparkles text-skyFresh"></i> The Pearl-Qatar Residences</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-droplet text-skyFresh"></i> Lusail Marina Towers</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-medal text-skyFresh"></i> 100% Eco-Certified Organic Steam</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-star text-skyFresh"></i> West Bay Corporate Elite</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-shield text-skyFresh"></i> ISO 9001 Hygiene Certified</div>
-            <!-- Repeat for seamless loop -->
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-sparkles text-skyFresh"></i> The Pearl-Qatar Residences</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-droplet text-skyFresh"></i> Lusail Marina Towers</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-medal text-skyFresh"></i> 100% Eco-Certified Organic Steam</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-star text-skyFresh"></i> West Bay Corporate Elite</div>
-            <div class="flex items-center gap-3 text-oceanic font-syne font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-shield text-skyFresh"></i> ISO 9001 Hygiene Certified</div>
-        </div>
-    </section>
+    <!-- MAIN CONTENT AREA WITH TAB ROUTING -->
+    <main class="relative min-h-screen">
+        
+        <!-- Ambient Water Bubbles Layer -->
+        <div class="bubble-container" id="bubbles"></div>
 
-    <!-- 🔹 D. INTERACTIVE BEFORE & AFTER "SQUEEGEE WIPE" SLIDER -->
-    <section id="squeegee" class="py-24 px-6 relative z-10">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center space-y-4 mb-12">
-                <span class="text-xs font-semibold uppercase tracking-widest text-skyFresh bg-sky-100 px-4 py-1.5 rounded-full">Interactive Proof</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl">Witness the <span class="liquid-text">Squeegee Transformation</span></h2>
-                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">Drag the squeegee handle across the viewport to witness our signature ultra-clean restoration on luxury interior glass and marble surfaces.</p>
-            </div>
+        <!-- ========================================================================= -->
+        <!-- TAB 1: HOME PAGE VIEW -->
+        <!-- ========================================================================= -->
+        <div id="page-home" class="tab-page transition-opacity duration-300">
+            
+            <!-- SECTION 1: BRAND INTRODUCTION (HERO) -->
+            <section class="relative bg-gradient-to-b from-ice-sky/60 via-white to-white py-12 lg:py-20 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Hero Left Content -->
+                        <div class="lg:col-span-6 space-y-6 text-center lg:text-left relative z-10">
+                            <!-- Tagline pill -->
+                            <div class="inline-flex items-center space-x-2 bg-ice px-4 py-2 rounded-full border border-lexogrey-border">
+                                <span class="w-2.5 h-2.5 rounded-full bg-accent-teal animate-pulse"></span>
+                                <span class="text-xs font-bold tracking-wider text-lexoblue uppercase">Clean Spaces, Healthy Places</span>
+                            </div>
 
-            <!-- Squeegee Container -->
-            <div id="sliderContainer" class="relative w-full aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white select-none cursor-ew-resize">
-                <!-- After Image (Clean) -->
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200" alt="Sparkling Clean Interior" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
-                
-                <!-- Before Image Overlay (Dusty) -->
-                <div id="beforeImageWrapper" class="absolute inset-0 w-1/2 overflow-hidden pointer-events-none border-r-4 border-skyFresh">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200" alt="Dusty Interior" class="absolute inset-0 w-full h-full object-cover filter sepia-[0.3] brightness-75 contrast-90 pointer-events-none" style="width: 100vw; max-width: none;">
-                    <div class="absolute top-4 left-4 bg-oceanic/80 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">Before Deep Clean</div>
-                </div>
+                            <!-- Main Headline -->
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-tight">
+                                Freshness & Care, <br>
+                                <span class="text-lexoblue">Everywhere.</span>
+                            </h1>
 
-                <!-- After Badge -->
-                <div class="absolute top-4 right-4 bg-skyFresh/90 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full pointer-events-none">After AuraClean</div>
+                            <!-- Description -->
+                            <p class="text-base sm:text-lg text-navy-light font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                                LEXO CARE provides high-standard professional cleaning and hospitality solutions for homes, businesses, and property spaces. Freshness, hygiene, and genuine care in every detail.
+                            </p>
 
-                <!-- Squeegee Handle Bar -->
-                <div id="sliderHandle" class="absolute top-0 bottom-0 w-1 bg-skyFresh cursor-ew-resize flex items-center justify-center" style="left: 50%;">
-                    <div class="w-10 h-10 rounded-full bg-white shadow-lg border-2 border-skyFresh flex items-center justify-center text-skyFresh text-sm">
-                        <i class="fa-solid fa-arrows-left-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                            <!-- CTAs -->
+                            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <button onclick="switchTab('services')" class="w-full sm:w-auto bg-lexoblue hover:bg-lexoblue-hover text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-hover flex items-center justify-center space-x-3">
+                                    <span>Our Services</span>
+                                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </button>
+                                <button onclick="scrollToQuote()" class="w-full sm:w-auto bg-white border-2 border-lexoblue text-lexoblue hover:bg-ice-sky font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-center space-x-2">
+                                    <span>Get a Quote</span>
+                                </button>
+                            </div>
 
-    <!-- 🔹 E. DEEP-DIVE SERVICES SUITE -->
-    <section id="services" class="py-24 px-6 relative z-10 bg-gradient-to-b from-transparent via-hydroIce/30 to-transparent">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-semibold uppercase tracking-widest text-skyFresh bg-sky-100 px-4 py-1.5 rounded-full">Modular Hygiene Suite</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl">Tailored <span class="liquid-text">Sanitization Solutions</span></h2>
-                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">Explore our specialized service modules engineered with clinical precision and luxury care.</p>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-house-chimney"></i>
+                            <!-- Value badges -->
+                            <div class="pt-6 border-t border-lexogrey-border grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <span class="block text-xl font-extrabold text-navy">100%</span>
+                                    <span class="text-xs text-lexogrey-soft">Quality Assured</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xl font-extrabold text-navy">Vetted</span>
+                                    <span class="text-xs text-lexogrey-soft">Trained Staff</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xl font-extrabold text-navy">Cleaner</span>
+                                    <span class="text-xs text-lexogrey-soft">Care Priority</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Residential Villa & Deep House Cleaning</h3>
-                        <p class="text-slate-600 text-sm mb-6">Deep tile scrubbing, grout whitening, kitchen degreasing, and air duct sanitization for immaculate villas.</p>
-                    </div>
-                    <button onclick="openServiceModal('Residential Villa & Deep House Cleaning', 'Comprehensive deep cleaning tailored for luxury Qatari villas. Includes tile scrubbing, sanitizing all wet areas, kitchen degreasing, cabinet interior detailing, and hospital-grade air duct decontamination.', '4 - 8 Hours', 'Starting from QAR 650')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
 
-                <!-- Service 2 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-building"></i>
+                        <!-- Hero Right Visual Composition (Matching reference layout) -->
+                        <div class="lg:col-span-6 relative flex justify-center items-center">
+                            <div class="relative w-full max-w-lg aspect-square">
+                                
+                                <!-- Soft Backdrop Circle -->
+                                <div class="absolute inset-0 bg-gradient-to-tr from-accent-aqua/40 to-ice-sky/60 rounded-full blur-2xl transform scale-90"></div>
+
+                                <!-- Main Hero Image Frame -->
+                                <div class="absolute inset-x-4 top-0 bottom-12 overflow-hidden shadow-2xl border-4 border-white hero-img-main bg-ice">
+                                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" 
+                                         alt="LEXO CARE Professional Cleaning" 
+                                         class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                                         onerror="this.src='https://placehold.co/800x800/E5F1FA/243247?text=LEXO+CARE+Professional+Staff'">
+                                </div>
+
+                                <!-- Supporting Floating Oval Image 1 -->
+                                <div class="absolute -top-4 -right-2 w-36 h-36 border-4 border-white shadow-xl overflow-hidden hero-img-sub1 bg-white">
+                                    <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=400&q=80" 
+                                         alt="Detailed Surface Cleaning" 
+                                         class="w-full h-full object-cover"
+                                         onerror="this.src='https://placehold.co/400x400/E5F1FA/243247?text=Detail+Care'">
+                                </div>
+
+                                <!-- Supporting Floating Image 2 -->
+                                <div class="absolute -bottom-2 -left-2 w-44 h-36 border-4 border-white shadow-xl overflow-hidden hero-img-sub2 bg-white">
+                                    <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=500&q=80" 
+                                         alt="Hospitality Support" 
+                                         class="w-full h-full object-cover"
+                                         onerror="this.src='https://placehold.co/500x300/E5F1FA/243247?text=Hospitality'">
+                                </div>
+
+                                <!-- Decorative Bubble Badge -->
+                                <div class="absolute bottom-6 right-6 glass-card px-5 py-3 rounded-2xl shadow-lg flex items-center space-x-3 border border-accent-aqua">
+                                    <div class="w-10 h-10 rounded-full bg-accent-teal/20 flex items-center justify-center text-lexoblue">
+                                        <i class="fa-solid fa-sparkles text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-navy">Fresh & Sanitized</p>
+                                        <p class="text-[10px] text-lexogrey-soft">Eco-conscious practices</p>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Commercial & Office Hygiene Solutions</h3>
-                        <p class="text-slate-600 text-sm mb-6">Corporate floor polishing, ergonomic desk sanitization, and pristine glass tower exterior maintenance.</p>
-                    </div>
-                    <button onclick="openServiceModal('Commercial & Office Hygiene Solutions', 'Tailored corporate hygiene protocols designed for West Bay and Lusail offices. Includes high-traffic floor crystallization, workstation electrostatic sanitization, and executive boardroom care.', 'Custom Timeline', 'Request Enterprise Quote')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
 
-                <!-- Service 3 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-couch"></i>
-                        </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Luxury Furniture & Carpet Steam Treatment</h3>
-                        <p class="text-slate-600 text-sm mb-6">Hot-water extraction process, allergen removal, and fabric-safe eco-steam treatment for delicate upholstery.</p>
-                    </div>
-                    <button onclick="openServiceModal('Luxury Furniture & Carpet Steam Treatment', 'Deep hot-water steam extraction removing 99.9% of dust mites, allergens, and stubborn stains from imported Italian leather sofas, Persian rugs, and bespoke mattresses.', '2 - 4 Hours', 'Starting from QAR 450')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-hammer"></i>
-                        </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Post-Construction Dust Eradication</h3>
-                        <p class="text-slate-600 text-sm mb-6">Heavy-duty particulate removal, paint speck scraping, and marble crystallization polishing.</p>
-                    </div>
-                    <button onclick="openServiceModal('Post-Construction Dust Eradication', 'Specialized heavy-duty cleaning for newly built or renovated villas. Complete particulate removal from all surfaces, paint speck removal, grout cleaning, and pristine floor polishing.', '1 - 3 Days', 'Starting from QAR 1,200')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-window-maximize"></i>
-                        </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Architectural Glass & Window Polishing</h3>
-                        <p class="text-slate-600 text-sm mb-6">Streak-free guarantee and hydro-phobic surface coating application for high-rise glass panels.</p>
-                    </div>
-                    <button onclick="openServiceModal('Architectural Glass & Window Polishing', 'Streak-free exterior and interior glass cleaning utilizing purified reverse-osmosis water systems and hydrophobic anti-dust coatings suited for Qatar desert climate.', '3 - 5 Hours', 'Starting from QAR 500')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-2xl mb-6 group-hover:bg-skyFresh group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-spray-can-sparkles"></i>
-                        </div>
-                        <h3 class="font-syne font-bold text-xl text-oceanic mb-3">Disinfection & Aromatherapy Refresh</h3>
-                        <p class="text-slate-600 text-sm mb-6">Qatar-approved non-toxic disinfectants combined with organic essential oil ambient mists.</p>
-                    </div>
-                    <button onclick="openServiceModal('Disinfection & Aromatherapy Refresh', 'Electrostatic fogging using Ministry of Public Health-approved hospital-grade disinfectants, followed by bespoke organic aromatherapy fragrance infusion (White Tea & Jasmine or Fresh Oceanic).', '2 Hours', 'Starting from QAR 350')" class="w-full py-3 rounded-xl bg-sky-50 text-skyFresh font-bold text-sm group-hover:bg-skyFresh group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                        <span>Explore Details</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 🔹 F. THE 4-STEP "SPARKLE PROCESS" TIMELINE -->
-    <section id="process" class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-semibold uppercase tracking-widest text-skyFresh bg-sky-100 px-4 py-1.5 rounded-full">Seamless Journey</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl">The 4-Step <span class="liquid-text">Sparkle Process</span></h2>
-                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">Designed for absolute transparency, elite punctuality, and complete peace of mind.</p>
-            </div>
-
-            <!-- Timeline Steps Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-                <!-- Step 1 -->
-                <div class="glass-panel rounded-[2rem] p-6 text-center relative group hover:border-skyFresh transition-all">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-skyFresh to-blue-600 text-white font-syne font-bold text-lg mx-auto flex items-center justify-center shadow-lg shadow-skyFresh/30 mb-4">01</div>
-                    <h3 class="font-syne font-bold text-lg text-oceanic mb-2">Instant Booking</h3>
-                    <p class="text-slate-600 text-xs">Select your space size and customize add-ons via our digital estimator.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="glass-panel rounded-[2rem] p-6 text-center relative group hover:border-skyFresh transition-all">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-skyFresh to-blue-600 text-white font-syne font-bold text-lg mx-auto flex items-center justify-center shadow-lg shadow-skyFresh/30 mb-4">02</div>
-                    <h3 class="font-syne font-bold text-lg text-oceanic mb-2">Custom Blueprint</h3>
-                    <p class="text-slate-600 text-xs">Our supervisors formulate a dedicated cleaning and sterilization plan.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="glass-panel rounded-[2rem] p-6 text-center relative group hover:border-skyFresh transition-all">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-skyFresh to-blue-600 text-white font-syne font-bold text-lg mx-auto flex items-center justify-center shadow-lg shadow-skyFresh/30 mb-4">03</div>
-                    <h3 class="font-syne font-bold text-lg text-oceanic mb-2">The Expert Crew</h3>
-                    <p class="text-slate-600 text-xs">Vetted professional specialists arrive with eco-certified equipment.</p>
-                </div>
-                <!-- Step 4 -->
-                <div class="glass-panel rounded-[2rem] p-6 text-center relative group hover:border-skyFresh transition-all">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-skyFresh to-blue-600 text-white font-syne font-bold text-lg mx-auto flex items-center justify-center shadow-lg shadow-skyFresh/30 mb-4">04</div>
-                    <h3 class="font-syne font-bold text-lg text-oceanic mb-2">Sparkle Inspection</h3>
-                    <p class="text-slate-600 text-xs">Final white-glove walkthrough and satisfaction sign-off.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 🔹 G. INTERACTIVE CLEANING ESTIMATOR & PRICING CALCULATOR -->
-    <section id="calculator" class="py-24 px-6 relative z-10 bg-hydroIce/30">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center space-y-4 mb-12">
-                <span class="text-xs font-semibold uppercase tracking-widest text-skyFresh bg-sky-100 px-4 py-1.5 rounded-full">Transparent Pricing</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl">Live <span class="liquid-text">Cleaning Estimator</span></h2>
-                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">Customize your cleaning parameters and watch our water cylinder gauge calculate your instant QAR estimate.</p>
-            </div>
-
-            <!-- Calculator Glass Dashboard -->
-            <div class="glass-panel rounded-[2.5rem] p-8 sm:p-12 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <!-- Controls Column -->
-                <div class="md:col-span-7 space-y-6">
-                    <!-- Property Type -->
-                    <div>
-                        <label class="block font-syne font-bold text-sm text-oceanic mb-3">Property Type</label>
-                        <div class="grid grid-cols-3 gap-3">
-                            <button type="button" onclick="setPropertyType('apartment', 350)" class="prop-btn py-2.5 rounded-xl text-xs font-bold border border-sky-200 bg-skyFresh text-white transition-all shadow-sm">Apartment</button>
-                            <button type="button" onclick="setPropertyType('villa', 650)" class="prop-btn py-2.5 rounded-xl text-xs font-bold border border-sky-200 bg-white/80 text-oceanic hover:bg-sky-50 transition-all">Luxury Villa</button>
-                            <button type="button" onclick="setPropertyType('office', 900)" class="prop-btn py-2.5 rounded-xl text-xs font-bold border border-sky-200 bg-white/80 text-oceanic hover:bg-sky-50 transition-all">Office Tower</button>
-                        </div>
-                    </div>
-
-                    <!-- Bedrooms Slider -->
-                    <div>
-                        <div class="flex justify-between font-syne font-bold text-sm text-oceanic mb-2">
-                            <span>Bedrooms / Rooms</span>
-                            <span id="bedCountVal" class="text-skyFresh">3 Beds</span>
-                        </div>
-                        <input type="range" id="bedSlider" min="1" max="8" value="3" oninput="calculatePrice()" class="w-full accent-skyFresh cursor-pointer">
-                    </div>
-
-                    <!-- Bathrooms Slider -->
-                    <div>
-                        <div class="flex justify-between font-syne font-bold text-sm text-oceanic mb-2">
-                            <span>Bathrooms / Washrooms</span>
-                            <span id="bathCountVal" class="text-skyFresh">3 Baths</span>
-                        </div>
-                        <input type="range" id="bathSlider" min="1" max="8" value="3" oninput="calculatePrice()" class="w-full accent-skyFresh cursor-pointer">
-                    </div>
-
-                    <!-- Add-on Toggles -->
-                    <div class="space-y-3 pt-2">
-                        <label class="block font-syne font-bold text-sm text-oceanic">Exclusive Add-ons</label>
-                        <div class="grid grid-cols-2 gap-3 text-xs">
-                            <label class="flex items-center gap-2 p-3 rounded-xl glass-card cursor-pointer">
-                                <input type="checkbox" id="addonSteam" value="150" onchange="calculatePrice()" class="accent-skyFresh"> Carpet Steam
-                            </label>
-                            <label class="flex items-center gap-2 p-3 rounded-xl glass-card cursor-pointer">
-                                <input type="checkbox" id="addonMarble" value="250" onchange="calculatePrice()" class="accent-skyFresh"> Marble Polish
-                            </label>
-                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Visual Water Cylinder Gauge Column -->
-                <div class="md:col-span-5 flex flex-col items-center justify-center bg-white/60 rounded-[2rem] p-6 border border-sky-100">
-                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">Estimated Investment</span>
+
+            <!-- SECTION 2: WHAT WE DO -->
+            <section class="py-16 bg-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
-                    <!-- Water Glass Cylinder Container -->
-                    <div class="relative w-32 h-64 rounded-full border-4 border-sky-200 bg-sky-50 overflow-hidden shadow-inner flex flex-col justify-end">
-                        <!-- Rising Water Liquid Level -->
-                        <div id="waterLevel" class="w-full bg-gradient-to-t from-skyFresh to-cloudBlue transition-all duration-500 relative" style="height: 45%;">
-                            <!-- Bubbles inside water -->
-                            <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle,_white_2px,_transparent_2px)] bg-[size:16px_16px] animate-pulse"></div>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span id="totalPrice" class="font-syne font-extrabold text-2xl text-oceanic drop-shadow-md">QAR 750</span>
-                        </div>
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Core Offerings</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">What We Do</h2>
+                        <p class="text-navy-light text-base mt-2">
+                            LEXO CARE delivers specialized cleaning and hospitality support crafted for precision, comfort, and peace of mind.
+                        </p>
                     </div>
 
-                    <p class="text-[11px] text-slate-500 text-center mt-4">Includes equipment, organic solutions & supervisor guarantee.</p>
+                    <!-- 4 Visual Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Residential Card -->
+                        <div class="group bg-ice rounded-3xl p-6 border border-lexogrey-border hover:border-lexoblue hover:shadow-hover transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-lexoblue shadow-sm group-hover:bg-lexoblue group-hover:text-white transition-colors mb-5">
+                                    <i class="fa-solid fa-house-chimney text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-navy mb-2">Residential</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">
+                                    Deep home cleaning, routine maintenance, and pristine living spaces for families.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-chevron-right ml-2 text-[10px]"></i>
+                            </div>
+                        </div>
 
-                    <button onclick="alert('Booking confirmed! Our concierge will contact you shortly via WhatsApp.')" class="mt-6 w-full py-3 bg-gradient-to-r from-skyFresh to-blue-600 text-white font-bold rounded-xl text-sm shadow-lg shadow-skyFresh/25 hover:scale-105 transition-all">
-                        Reserve Slot Now
-                    </button>
+                        <!-- Commercial Card -->
+                        <div class="group bg-ice rounded-3xl p-6 border border-lexogrey-border hover:border-lexoblue hover:shadow-hover transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-lexoblue shadow-sm group-hover:bg-lexoblue group-hover:text-white transition-colors mb-5">
+                                    <i class="fa-solid fa-building text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-navy mb-2">Commercial</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">
+                                    Offices, retail hubs, and corporate facilities maintained with quiet professionalism.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-chevron-right ml-2 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Specialized Card -->
+                        <div class="group bg-ice rounded-3xl p-6 border border-lexogrey-border hover:border-lexoblue hover:shadow-hover transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-lexoblue shadow-sm group-hover:bg-lexoblue group-hover:text-white transition-colors mb-5">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-navy mb-2">Specialized</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">
+                                    Post-construction cleanup, deep sanitization, carpet, and glass treatment.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-chevron-right ml-2 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Hospitality Card -->
+                        <div class="group bg-ice rounded-3xl p-6 border border-lexogrey-border hover:border-lexoblue hover:shadow-hover transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-lexoblue shadow-sm group-hover:bg-lexoblue group-hover:text-white transition-colors mb-5">
+                                    <i class="fa-solid fa-bell-concierge text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-navy mb-2">Hospitality</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">
+                                    Hotels, serviced apartments, event venues, and short-term rental support.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-lexogrey-border/60 flex items-center text-xs font-bold text-lexoblue group-hover:translate-x-1 transition-transform">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-chevron-right ml-2 text-[10px]"></i>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- 🔹 H. CLIENT WALL OF PRAISE (TESTIMONIALS) -->
-    <section id="testimonials" class="py-24 px-6 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-semibold uppercase tracking-widest text-skyFresh bg-sky-100 px-4 py-1.5 rounded-full">Verified Testimonials</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl">Loved by Qatar's <span class="liquid-text">Elite Homeowners</span></h2>
-                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">Read authentic praise from residents across The Pearl, Lusail Marina, and West Bay.</p>
-            </div>
 
-            <!-- Testimonial Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="flex text-amber-400 text-sm gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 text-sm italic">"The team transformed our penthouse at Porto Arabia into a mirror-shine masterpiece. The marble crystallization and organic aromatherapy fragrance were phenomenal!"</p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-sky-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-skyFresh/20 flex items-center justify-center font-bold text-skyFresh text-sm">FA</div>
+            <!-- SECTION 3: OUR SERVICES (5 Categories) -->
+            <section class="py-16 bg-ice-sky/40 border-y border-lexogrey-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
-                            <h5 class="font-syne font-bold text-sm text-oceanic">Fahad Al-Thani</h5>
-                            <p class="text-[11px] text-slate-400">Porto Arabia, The Pearl</p>
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Service Categories</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Services Tailored To You</h2>
                         </div>
+                        <button onclick="switchTab('services')" class="mt-4 md:mt-0 text-sm font-bold text-lexoblue hover:text-navy transition-colors flex items-center space-x-2">
+                            <span>Explore Full Details</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
                     </div>
-                </div>
 
-                <!-- Testimonial 2 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="flex text-amber-400 text-sm gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <!-- 5 Service Row Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- 1. Residential Cleaning -->
+                        <div class="bg-white p-6 rounded-3xl border border-lexogrey-border shadow-soft hover:shadow-hover transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">01</div>
+                                <h3 class="text-lg font-bold text-navy">Residential Cleaning</h3>
+                            </div>
+                            <p class="text-sm text-navy-light mb-4">Comprehensive house cleaning, apartments, kitchens, bathrooms, and deep dusting.</p>
+                            <ul class="text-xs text-navy-light space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Deep & Routine Cleaning</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Kitchen & Appliance Care</li>
+                            </ul>
                         </div>
-                        <p class="text-slate-700 text-sm italic">"Punctual, exceptionally courteous, and impeccably thorough. Their post-construction cleaning service saved us weeks of headaches in Lusail."</p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-sky-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-skyFresh/20 flex items-center justify-center font-bold text-skyFresh text-sm">SM</div>
-                        <div>
-                            <h5 class="font-syne font-bold text-sm text-oceanic">Sarah Miller</h5>
-                            <p class="text-[11px] text-slate-400">Fox Hills, Lusail Marina</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Testimonial 3 -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="flex text-amber-400 text-sm gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <!-- 2. Commercial Cleaning -->
+                        <div class="bg-white p-6 rounded-3xl border border-lexogrey-border shadow-soft hover:shadow-hover transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">02</div>
+                                <h3 class="text-lg font-bold text-navy">Commercial Cleaning</h3>
+                            </div>
+                            <p class="text-sm text-navy-light mb-4">Professional workplace maintenance ensuring clean, hygienic, and productive spaces.</p>
+                            <ul class="text-xs text-navy-light space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Offices & Retail Outlets</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Daily or Scheduled Visits</li>
+                            </ul>
                         </div>
-                        <p class="text-slate-700 text-sm italic">"Best corporate office hygiene partner in West Bay. Their discreet team works around our executive hours with zero disruption."</p>
-                    </div>
-                    <div class="pt-6 mt-6 border-t border-sky-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-skyFresh/20 flex items-center justify-center font-bold text-skyFresh text-sm">KA</div>
-                        <div>
-                            <h5 class="font-syne font-bold text-sm text-oceanic">Khalid Al-Mansoori</h5>
-                            <p class="text-[11px] text-slate-400">West Bay Financial Center</p>
+
+                        <!-- 3. Specialized Cleaning -->
+                        <div class="bg-white p-6 rounded-3xl border border-lexogrey-border shadow-soft hover:shadow-hover transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">03</div>
+                                <h3 class="text-lg font-bold text-navy">Specialized Cleaning</h3>
+                            </div>
+                            <p class="text-sm text-navy-light mb-4">Detailed treatments for post-construction, move-in/out, glass, and upholstery.</p>
+                            <ul class="text-xs text-navy-light space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Post-Renovation Polish</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Deep Furniture Care</li>
+                            </ul>
                         </div>
+
+                        <!-- 4. Hospitality Services -->
+                        <div class="bg-white p-6 rounded-3xl border border-lexogrey-border shadow-soft hover:shadow-hover transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">04</div>
+                                <h3 class="text-lg font-bold text-navy">Hospitality Services</h3>
+                            </div>
+                            <p class="text-sm text-navy-light mb-4">Bespoke staffing support for boutique hotels, holiday homes, and VIP events.</p>
+                            <ul class="text-xs text-navy-light space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Airbnb Turnover & Housekeeping</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Linen & Amenity Setup</li>
+                            </ul>
+                        </div>
+
+                        <!-- 5. Hourly Cleaning -->
+                        <div class="bg-white p-6 rounded-3xl border border-lexogrey-border shadow-soft hover:shadow-hover transition-all">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center font-bold">05</div>
+                                <h3 class="text-lg font-bold text-navy">Hourly Cleaning</h3>
+                            </div>
+                            <p class="text-sm text-navy-light mb-4">Flexible, on-demand assistance for general chores and customized priorities.</p>
+                            <ul class="text-xs text-navy-light space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Minimum 3-Hour Booking</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-lexoblue mr-2"></i> Custom Task Checklist</li>
+                            </ul>
+                        </div>
+
+                        <!-- Quick Quote Teaser Box -->
+                        <div class="bg-gradient-to-br from-lexoblue to-navy text-white p-6 rounded-3xl flex flex-col justify-between shadow-lg">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-accent-aqua block mb-2">Fast Booking</span>
+                                <h3 class="text-xl font-extrabold mb-2">Need a custom plan?</h3>
+                                <p class="text-xs text-white/80">Tell us what you need and we will create a tailored package for your space.</p>
+                            </div>
+                            <button onclick="scrollToQuote()" class="mt-6 w-full bg-white text-navy font-bold text-xs py-3 rounded-full hover:bg-ice transition-colors">
+                                Get Custom Price
+                            </button>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </section>
+
+
+            <!-- SECTION 4: WHY CHOOSE LEXO CARE -->
+            <section class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center max-w-3xl mx-auto mb-14">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Our Distinction</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Why Choose LEXO CARE</h2>
+                        <p class="text-navy-light text-base mt-2">
+                            We don't just clean spaces—we uplift standards with professional equipment, reliable routines, and genuine human respect.
+                        </p>
+                    </div>
+
+                    <!-- 6 Grid Items -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Point 1 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-ice-sky flex-shrink-0 flex items-center justify-center text-lexoblue">
+                                <i class="fa-solid fa-user-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-navy mb-1">Trained Professionals</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">Vetted, background-checked staff trained in modern cleaning protocols and hygiene safety.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 2 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-ice-sky flex-shrink-0 flex items-center justify-center text-lexoblue">
+                                <i class="fa-solid fa-clock-rotate-left text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-navy mb-1">Reliable Service</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">Punctual teams, consistent quality standards, and smooth booking experiences every single time.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 3 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-ice-sky flex-shrink-0 flex items-center justify-center text-lexoblue">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-navy mb-1">Quality Standards</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">Inspected workflows, eco-friendly supplies, and detailed checklists for total reassurance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 4 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-ice-sky flex-shrink-0 flex items-center justify-center text-lexoblue">
+                                <i class="fa-solid fa-sliders text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-navy mb-1">Flexible Solutions</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">One-time deep cleans, recurring schedules, or custom hourly bookings built around your life.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 5 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-ice-sky flex-shrink-0 flex items-center justify-center text-lexoblue">
+                                <i class="fa-solid fa-spray-can-sparkles text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-navy mb-1">Professional Equipment</h3>
+                                <p class="text-sm text-navy-light leading-relaxed">Industrial-grade vacuums, micro-fiber tech, and safe, effective sanitation agents.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 6 (SPECIAL BRAND HIGHLIGHT: Cleaner Care) -->
+                        <div class="flex items-start space-x-4 bg-gradient-to-r from-ice-sky/60 to-white p-4 rounded-2xl border border-lexoblue/20">
+                            <div class="w-12 h-12 rounded-2xl bg-lexoblue flex-shrink-0 flex items-center justify-center text-white shadow-sm">
+                                <i class="fa-solid fa-heart text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <h3 class="text-lg font-bold text-navy">Cleaner Care</h3>
+                                    <span class="bg-lexoblue text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Brand Core</span>
+                                </div>
+                                <p class="text-sm text-navy-light leading-relaxed mt-1">We honor our team with fair wages, modern safety equipment, and standard care—because valued workers deliver exceptional results.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- SECTION 5: ABOUT LEXO CARE (SHORT BRIEF) -->
+            <section class="py-16 bg-ice/50 border-t border-lexogrey-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-lexogrey-border shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        
+                        <div class="lg:col-span-8 space-y-4">
+                            <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-ice-sky px-3 py-1 rounded-full">Who We Are</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">We Care About Your Space & The People Who Serve It</h2>
+                            <p class="text-base text-navy-light leading-relaxed">
+                                LEXO CARE was created to re-define cleaning and hospitality services. We believe that clean environments inspire better living and working. By combining strict quality control with genuine worker respect, we bring dependable, high-caliber service to every door.
+                            </p>
+                        </div>
+
+                        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+                            <button onclick="switchTab('about')" class="bg-navy hover:bg-navy-dark text-white font-semibold px-8 py-4 rounded-full transition-all text-sm flex items-center space-x-3">
+                                <span>Read Our Story</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </section>
 
-    <!-- 🔹 I. FOOTER & CONTACT HUBS -->
-    <footer class="bg-oceanic text-white pt-20 pb-12 px-6 rounded-t-[3rem] relative z-10 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-            <!-- Brand Column -->
-            <div class="md:col-span-4 space-y-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-skyFresh flex items-center justify-center text-white shadow-md">
-                        <i class="fa-solid fa-droplet text-lg"></i>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 2: SERVICES DETAILED VIEW -->
+        <!-- ========================================================================= -->
+        <div id="page-services" class="tab-page hidden transition-opacity duration-300">
+            
+            <!-- Services Banner -->
+            <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">What Can I Book?</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Services & Offerings</h1>
+                    <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
+                        Choose from 5 simplified categories tailored to your home, workspace, or commercial operations.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Detailed Categories Grid -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                
+                <!-- Category 1: Residential -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                    <div class="lg:col-span-5">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Residential Cleaning" class="rounded-2xl w-full h-64 object-cover">
                     </div>
-                    <span class="font-syne font-extrabold text-2xl tracking-tight text-white">AURA<span class="text-skyFresh">CLEAN</span></span>
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">For Homes</span>
+                        <h2 class="text-2xl font-bold text-navy">Residential Cleaning</h2>
+                        <p class="text-sm text-navy-light leading-relaxed">
+                            From routine maintenance to complete deep cleansing, we ensure your living space is continuous, spotless, and safe for your family.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Bedroom & Living Rooms</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Kitchen & Cabinet Care</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Bathroom Disinfection</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Dusting & Vacuuming</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-slate-300 text-sm">Qatar's leading ultra-luxury cleaning and sanitization firm, bringing pristine aquatic freshness to every corner.</p>
-                <div class="flex gap-3 pt-2">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-skyFresh transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-skyFresh transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-skyFresh transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                <!-- Category 2: Commercial -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                    <div class="lg:col-span-7 space-y-4 order-2 lg:order-1">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">For Businesses</span>
+                        <h2 class="text-2xl font-bold text-navy">Commercial Cleaning</h2>
+                        <p class="text-sm text-navy-light leading-relaxed">
+                            Keep your business premises spotless for employees and visiting clients. Custom cleaning schedules available daily, weekly, or after hours.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Corporate Offices</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Retail & Showrooms</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> High-Touch Surface Care</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Common Areas & Lobbies</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Commercial Cleaning" class="rounded-2xl w-full h-64 object-cover">
+                    </div>
                 </div>
-            </div>
 
-            <!-- Quick Links -->
-            <div class="md:col-span-2 space-y-4">
-                <h4 class="font-syne font-bold text-base text-sky-300">Navigation</h4>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li><a href="#services" class="hover:text-skyFresh transition-colors">Services</a></li>
-                    <li><a href="#squeegee" class="hover:text-skyFresh transition-colors">Before & After</a></li>
-                    <li><a href="#process" class="hover:text-skyFresh transition-colors">Sparkle Process</a></li>
-                    <li><a href="#calculator" class="hover:text-skyFresh transition-colors">Estimator</a></li>
-                </ul>
-            </div>
+                <!-- Category 3: Specialized -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                    <div class="lg:col-span-5">
+                        <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=700&q=80" alt="Specialized Cleaning" class="rounded-2xl w-full h-64 object-cover">
+                    </div>
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Detailed Care</span>
+                        <h2 class="text-2xl font-bold text-navy">Specialized Cleaning</h2>
+                        <p class="text-sm text-navy-light leading-relaxed">
+                            Targeted cleaning solutions requiring technical attention, specialized solutions, and equipment.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Post-Construction Dust Removal</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Move-In / Move-Out Prep</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Carpet & Sofa Shampoo</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Window & Glass Washing</span>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Contact HQ -->
-            <div class="md:col-span-3 space-y-4">
-                <h4 class="font-syne font-bold text-base text-sky-300">Qatar Headquarters</h4>
-                <p class="text-sm text-slate-300"><i class="fa-solid fa-location-dot text-skyFresh mr-2"></i> Lusail Marina Tower 28, Doha, Qatar</p>
-                <p class="text-sm text-slate-300"><i class="fa-solid fa-phone text-skyFresh mr-2"></i> +974 4400 9922</p>
-                <p class="text-sm text-slate-300"><i class="fa-solid fa-envelope text-skyFresh mr-2"></i> concierge@auraclean.qa</p>
-            </div>
+                <!-- Category 4: Hospitality -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                    <div class="lg:col-span-7 space-y-4 order-2 lg:order-1">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Property Support</span>
+                        <h2 class="text-2xl font-bold text-navy">Hospitality Services</h2>
+                        <p class="text-sm text-navy-light leading-relaxed">
+                            Support services tailored for hotels, Airbnb short-term rentals, and event venues demanding five-star presentation standards.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Guest Turnover & Bedding</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Amenity Restocking</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Event Setup & Clean Down</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Luxury Villa Care</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=700&q=80" alt="Hospitality Support" class="rounded-2xl w-full h-64 object-cover">
+                    </div>
+                </div>
 
-            <!-- Newsletter -->
-            <div class="md:col-span-3 space-y-4">
-                <h4 class="font-syne font-bold text-base text-sky-300">Clean Inbox</h4>
-                <p class="text-sm text-slate-300">Subscribe for seasonal hygiene tips and priority booking invitations.</p>
-                <form onsubmit="event.preventDefault(); alert('Subscribed successfully!');" class="flex gap-2">
-                    <input type="email" placeholder="Your email address" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-skyFresh w-full">
-                    <button type="submit" class="bg-skyFresh px-4 py-2.5 rounded-xl text-white font-bold hover:bg-blue-600 transition-colors"><i class="fa-solid fa-paper-plane"></i></button>
-                </form>
-            </div>
+                <!-- Category 5: Hourly Cleaning -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                    <div class="lg:col-span-5">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=700&q=80" alt="Hourly Cleaning" class="rounded-2xl w-full h-64 object-cover">
+                    </div>
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-wider bg-ice-sky px-3 py-1 rounded-full">Flexible Cleaning</span>
+                        <h2 class="text-2xl font-bold text-navy">Hourly Cleaning</h2>
+                        <p class="text-sm text-navy-light leading-relaxed">
+                            Need a quick hand or specific chores done? Book flexible hourly helpers who follow your personalized priority list.
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-navy font-medium pt-2">
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Laundry & Ironing</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Closet Organization</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> General Surface Wipe Down</span>
+                            <span class="flex items-center"><i class="fa-solid fa-circle-check text-lexoblue mr-2"></i> Flexible Task Checklist</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Interactive Inclusion Comparison Section -->
+            <section class="py-16 bg-ice-sky/30 border-t border-lexogrey-border">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center mb-10">
+                        <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Clear Transparency</span>
+                        <h2 class="text-3xl font-extrabold text-navy mt-3">What’s Included & What’s Not</h2>
+                        <p class="text-sm text-navy-light mt-1">We believe in upfront clarity so you know exactly what to expect.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- What's Included -->
+                        <div class="bg-white p-8 rounded-3xl border border-lexoblue/30 shadow-soft">
+                            <div class="flex items-center space-x-3 text-lexoblue font-bold text-lg mb-6 pb-3 border-b border-lexogrey-border">
+                                <i class="fa-solid fa-circle-check text-xl text-lexoblue"></i>
+                                <span>What’s Included</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-navy-light">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Standard eco-conscious cleaning detergents</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Microfiber cloths & specialized mop systems</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Dusting of accessible surfaces & light fixtures</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Vacuuming & floor damp-mopping</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Trash removal & liner replacement</li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-lexoblue mt-1 mr-3"></i> Full staff inspection & quality checklist</li>
+                            </ul>
+                        </div>
+
+                        <!-- What's Not Included -->
+                        <div class="bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                            <div class="flex items-center space-x-3 text-navy-light font-bold text-lg mb-6 pb-3 border-b border-lexogrey-border">
+                                <i class="fa-solid fa-circle-xmark text-xl text-lexogrey-soft"></i>
+                                <span>What’s Not Included</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-navy-light">
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Exterior window cleaning above ground height</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Hazardous or bio-hazard waste removal</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Pest extermination (available on specialized quote)</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Heavy furniture moving exceeding 25kg</li>
+                                <li class="flex items-start"><i class="fa-solid fa-xmark text-lexogrey-soft mt-1 mr-3"></i> Unsupervised personal financial item handling</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400">
-            <p>&copy; 2026 AuraClean Qatar W.L.L. All rights reserved.</p>
-            <div class="flex gap-6 mt-4 sm:mt-0">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors">MoPH Compliance</a>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 3: ABOUT US VIEW -->
+        <!-- ========================================================================= -->
+        <div id="page-about" class="tab-page hidden transition-opacity duration-300">
+            
+            <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">About Lexo</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">Redefining Service Standards</h1>
+                    <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
+                        Built on precision, reliability, and human care.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                
+                <!-- Story section -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <h2 class="text-3xl font-extrabold text-navy">Our Story & Purpose</h2>
+                        <p class="text-base text-navy-light leading-relaxed">
+                            LEXO CARE was established to bring modern efficiency and high-grade hygiene to residential homes, commercial offices, and property management sectors.
+                        </p>
+                        <p class="text-base text-navy-light leading-relaxed">
+                            We observed that conventional cleaning companies often compromised either on quality or on worker welfare. We chose a different route: prioritizing both. Clean spaces foster better health, focus, and comfort—and well-cared-for teams deliver unmatched service.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <div class="bg-ice-sky rounded-3xl p-8 border border-lexogrey-border">
+                            <h3 class="text-xl font-bold text-navy mb-4"><i class="fa-solid fa-compass text-lexoblue mr-2"></i> Our Core Philosophy</h3>
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
+                                    <h4 class="font-bold text-navy text-sm">Integrity & Respect</h4>
+                                    <p class="text-xs text-navy-light mt-1">Honest quotes, respectful interaction, and total safety inside your private premises.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
+                                    <h4 class="font-bold text-navy text-sm">Cleaner Care Focus</h4>
+                                    <p class="text-xs text-navy-light mt-1">Proper training, fair treatment, and health insurance for every LEXO team member.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-lexogrey-border">
+                                    <h4 class="font-bold text-navy text-sm">Consistent Quality</h4>
+                                    <p class="text-xs text-navy-light mt-1">Standardized multi-point inspection protocols for total satisfaction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Short Brand Statement Box -->
+                <div class="bg-navy text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+                    <div class="relative z-10 max-w-3xl mx-auto space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-accent-teal">Short Brand Statement</span>
+                        <blockquote class="text-2xl sm:text-3xl font-bold italic leading-snug">
+                            "Clean spaces inspire better living. Cared-for teams create lasting trust."
+                        </blockquote>
+                        <p class="text-xs text-ice-silver">LEXO CARE — Professional Cleaning & Hospitality</p>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ========================================================================= -->
+        <!-- TAB 4: CONTACT PAGE VIEW -->
+        <!-- ========================================================================= -->
+        <div id="page-contact" class="tab-page hidden transition-opacity duration-300">
+            
+            <section class="bg-gradient-to-b from-ice-sky/80 to-white py-14 border-b border-lexogrey-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold text-lexoblue uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-lexogrey-border">Get In Touch</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-navy mt-4">We're Here To Help</h1>
+                    <p class="text-base sm:text-lg text-navy-light max-w-2xl mx-auto mt-3">
+                        Reach out for instant quotes, service inquiries, or custom scheduling.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Contact Channels -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <h2 class="text-2xl font-bold text-navy">Direct Communication</h2>
+                        <p class="text-sm text-navy-light">
+                            Connect directly through WhatsApp, Phone, or Email for rapid assistance.
+                        </p>
+
+                        <!-- Channels List -->
+                        <div class="space-y-4">
+                            
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/97444000000" target="_blank" class="flex items-center p-4 bg-white rounded-2xl border border-lexogrey-border hover:border-lexoblue hover:shadow-soft transition-all group">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-lexogrey-soft block">Chat via WhatsApp</span>
+                                    <span class="text-sm font-bold text-navy">+974 4400 0000</span>
+                                </div>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+97444000000" class="flex items-center p-4 bg-white rounded-2xl border border-lexogrey-border hover:border-lexoblue hover:shadow-soft transition-all group">
+                                <div class="w-12 h-12 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center text-xl mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-lexogrey-soft block">Direct Phone Line</span>
+                                    <span class="text-sm font-bold text-navy">+974 4400 0000</span>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:info@lexocare.com" class="flex items-center p-4 bg-white rounded-2xl border border-lexogrey-border hover:border-lexoblue hover:shadow-soft transition-all group">
+                                <div class="w-12 h-12 rounded-xl bg-ice-sky text-lexoblue flex items-center justify-center text-xl mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-lexogrey-soft block">Email Inquiries</span>
+                                    <span class="text-sm font-bold text-navy">info@lexocare.com</span>
+                                </div>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="#" class="flex items-center p-4 bg-white rounded-2xl border border-lexogrey-border hover:border-lexoblue hover:shadow-soft transition-all group">
+                                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-lexogrey-soft block">LinkedIn Corporate Page</span>
+                                    <span class="text-sm font-bold text-navy">LEXO CARE Official</span>
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <!-- Service Area Info -->
+                        <div class="p-6 bg-ice rounded-2xl border border-lexogrey-border">
+                            <h3 class="text-sm font-bold text-navy mb-2"><i class="fa-solid fa-location-dot text-lexoblue mr-2"></i> Service Area & Hours</h3>
+                            <p class="text-xs text-navy-light leading-relaxed">
+                                Serving residential homes, hotels, and commercial estates across the region. <br>
+                                <strong>Hours:</strong> Saturday – Thursday: 8:00 AM – 8:00 PM
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Contact Form Column -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-white p-8 rounded-3xl border border-lexogrey-border shadow-soft">
+                            <h2 class="text-2xl font-bold text-navy mb-2">Send Service Request</h2>
+                            <p class="text-xs text-navy-light mb-6">Fill out your requirements below and our scheduling team will respond within 2 hours.</p>
+
+                            <form id="contact-page-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-navy mb-1">Your Full Name *</label>
+                                    <input type="text" required placeholder="e.g. Sarah Mansoor" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-navy mb-1">Email Address *</label>
+                                        <input type="email" required placeholder="name@domain.com" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-navy mb-1">Phone / Mobile *</label>
+                                        <input type="tel" required placeholder="+974 5500 0000" class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-navy mb-1">Service Category Required *</label>
+                                    <select required class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite">
+                                        <option value="">Select Service Category...</option>
+                                        <option value="residential">Residential Cleaning</option>
+                                        <option value="commercial">Commercial Cleaning</option>
+                                        <option value="specialized">Specialized Cleaning</option>
+                                        <option value="hospitality">Hospitality Support</option>
+                                        <option value="hourly">Hourly Cleaning</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-navy mb-1">Message / Space Details</label>
+                                    <textarea rows="4" placeholder="Tell us about your property size, preferred dates, or specific needs..." class="w-full px-4 py-3 rounded-xl border border-lexogrey-border focus:outline-none focus:border-lexoblue text-sm bg-lexogrey-offwhite"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-lexoblue hover:bg-lexoblue-hover text-white font-bold py-4 rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
+                                    <span>Send Service Request</span>
+                                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ========================================================================= -->
+        <!-- SHARED SECTION 6: GET A QUOTE (Clean Blue Section near bottom) -->
+        <!-- ========================================================================= -->
+        <section id="quote-section" class="py-16 bg-gradient-to-r from-lexoblue via-navy to-navy text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Info -->
+                    <div class="lg:col-span-5 space-y-4 text-center lg:text-left">
+                        <span class="text-xs font-bold tracking-widest text-accent-aqua uppercase bg-white/10 px-3 py-1 rounded-full">Get a Quote</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let’s Keep Your Space Spotless</h2>
+                        <p class="text-sm text-ice-sky leading-relaxed">
+                            Tell us about your requirements and our team will get back to you with the best tailored solution.
+                        </p>
+
+                        <!-- Direct WhatsApp Option -->
+                        <div class="pt-4">
+                            <a href="https://wa.me/97444000000?text=Hello%20LEXO%20CARE,%20I%20would%20like%20to%20get%20a%20quote" 
+                               target="_blank" 
+                               class="inline-flex items-center space-x-3 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-full text-xs font-bold transition-all shadow-lg">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Instant Quote via WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Form Box -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-card p-6 sm:p-8 rounded-3xl text-navy">
+                            <form id="global-quote-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-navy mb-1">Name *</label>
+                                        <input type="text" required placeholder="Your Name" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-navy mb-1">Email *</label>
+                                        <input type="email" required placeholder="Email Address" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-navy mb-1">Phone *</label>
+                                        <input type="tel" required placeholder="Phone Number" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-navy mb-1">Service Required *</label>
+                                        <select required class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                            <option value="">Select Service...</option>
+                                            <option value="residential">Residential Cleaning</option>
+                                            <option value="commercial">Commercial Cleaning</option>
+                                            <option value="specialized">Specialized Cleaning</option>
+                                            <option value="hospitality">Hospitality Services</option>
+                                            <option value="hourly">Hourly Cleaning</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-navy mb-1">Preferred Timing</label>
+                                        <input type="text" placeholder="e.g. Tomorrow Morning" class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[11px] font-bold text-navy mb-1">Message</label>
+                                    <textarea rows="3" placeholder="Additional details or specific instructions..." class="w-full px-3 py-2.5 rounded-xl border border-lexogrey-border text-xs focus:outline-none focus:border-lexoblue bg-white"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-lexoblue hover:bg-lexoblue-hover text-white font-bold text-xs py-3.5 rounded-full transition-all shadow-md flex items-center justify-center space-x-2">
+                                    <span>Send Enquiry</span>
+                                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+        </section>
+
+    </main>
+
+
+    <!-- SECTION 7: FOOTER -->
+    <footer class="bg-navy text-white pt-16 pb-8 border-t border-navy-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-navy-light/50">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-lexoblue to-accent-teal flex items-center justify-center text-white">
+                            <i class="fa-solid fa-droplet text-sm"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-white">LEXO CARE</span>
+                    </div>
+                    <p class="text-xs text-lexogrey-soft leading-relaxed max-w-sm">
+                        Professional cleaning and hospitality services you can trust. We deliver freshness, hygiene, and peace of mind with genuine care for customers and staff.
+                    </p>
+                    <!-- Social icons -->
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-lexoblue flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-lexoblue flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-lexoblue flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/97444000000" target="_blank" class="w-8 h-8 rounded-full bg-navy-dark hover:bg-emerald-600 flex items-center justify-center text-white text-xs transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-lexogrey-soft">
+                        <li><button onclick="switchTab('home')" class="hover:text-lexoblue transition-colors">Home</button></li>
+                        <li><button onclick="switchTab('about')" class="hover:text-lexoblue transition-colors">About Us</button></li>
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Services</button></li>
+                        <li><button onclick="switchTab('contact')" class="hover:text-lexoblue transition-colors">Contact</button></li>
+                        <li><button onclick="scrollToQuote()" class="hover:text-lexoblue transition-colors">Get a Quote</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Our Services</h4>
+                    <ul class="space-y-2 text-xs text-lexogrey-soft">
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Residential Cleaning</button></li>
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Commercial Cleaning</button></li>
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Specialized Cleaning</button></li>
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Hospitality Services</button></li>
+                        <li><button onclick="switchTab('services')" class="hover:text-lexoblue transition-colors">Hourly Cleaning</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Details -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Contact Us</h4>
+                    <ul class="space-y-3 text-xs text-lexogrey-soft">
+                        <li class="flex items-center"><i class="fa-solid fa-phone text-lexoblue mr-2"></i> +974 4400 0000</li>
+                        <li class="flex items-center"><i class="fa-solid fa-envelope text-lexoblue mr-2"></i> info@lexocare.com</li>
+                        <li class="flex items-center"><i class="fa-solid fa-location-dot text-lexoblue mr-2"></i> Commercial Reg: 123456</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright & Legal -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-lexogrey-soft">
+                <p>© 2026 LEXO CARE. All Rights Reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+
         </div>
     </footer>
 
-    <!-- Service Detail Modal Template -->
-    <div id="serviceModal" class="fixed inset-0 z-50 bg-oceanic/60 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="glass-panel max-w-lg w-full rounded-[2.5rem] p-8 relative shadow-2xl border border-white space-y-6">
-            <button onclick="closeServiceModal()" class="absolute top-6 right-6 text-xl text-oceanic hover:text-skyFresh"><i class="fa-solid fa-xmark"></i></button>
-            <div class="w-12 h-12 rounded-2xl bg-skyFresh/10 text-skyFresh flex items-center justify-center text-xl">
-                <i class="fa-solid fa-sparkles"></i>
+
+    <!-- CUSTOM MODAL TOAST FOR FORM SUBMISSIONS -->
+    <div id="toast-modal" class="fixed inset-0 bg-navy/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center space-y-4 border border-lexogrey-border shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-ice-sky text-lexoblue flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-check"></i>
             </div>
-            <div>
-                <h3 id="modalTitle" class="font-syne font-bold text-2xl text-oceanic mb-2">Service Title</h3>
-                <p id="modalDesc" class="text-slate-600 text-sm leading-relaxed">Service full description goes here.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 py-4 border-y border-sky-100">
-                <div>
-                    <span class="text-xs text-slate-400 block font-semibold">Estimated Duration</span>
-                    <span id="modalDuration" class="font-syne font-bold text-sm text-oceanic">4 Hours</span>
-                </div>
-                <div>
-                    <span class="text-xs text-slate-400 block font-semibold">Pricing Range</span>
-                    <span id="modalPrice" class="font-syne font-bold text-sm text-skyFresh">QAR 650</span>
-                </div>
-            </div>
-            <button onclick="closeServiceModal(); location.href='#calculator';" class="w-full py-3.5 bg-gradient-to-r from-skyFresh to-blue-600 text-white font-bold rounded-xl text-sm shadow-lg shadow-skyFresh/25 hover:scale-105 transition-all flex items-center justify-center gap-2">
-                <span>Book This Service Now</span>
-                <i class="fa-solid fa-arrow-right"></i>
+            <h3 class="text-xl font-bold text-navy">Request Received!</h3>
+            <p class="text-xs text-navy-light leading-relaxed">
+                Thank you for contacting LEXO CARE. Our representative will reach out shortly to confirm your quote and booking details.
+            </p>
+            <button onclick="closeToast()" class="w-full bg-lexoblue text-white text-xs font-bold py-3 rounded-full hover:bg-lexoblue-hover transition-colors">
+                Back to Site
             </button>
         </div>
     </div>
 
-    <!-- JavaScript Execution Engine -->
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
-        /* --- 1. Canvas Bubble Physics --- */
-        const canvas = document.getElementById('bubbleCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let bubbles = [];
-        let mouse = { x: -1000, y: -1000, radius: 120 };
-
-        function resizeCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-
-        class Bubble {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * width;
-                this.y = height + Math.random() * 100;
-                this.radius = Math.random() * 16 + 6;
-                this.speedY = Math.random() * 0.8 + 0.3;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.4 + 0.1;
-                this.angle = Math.random() * Math.PI * 2;
-                this.spin = (Math.random() - 0.5) * 0.02;
-            }
-            update() {
-                this.y -= this.speedY;
-                this.x += this.speedX + Math.sin(this.angle) * 0.3;
-                this.angle += this.spin;
-
-                // Mouse repel physics
-                let dx = this.x - mouse.x;
-                let dy = this.y - mouse.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    let force = (mouse.radius - distance) / mouse.radius;
-                    let angle = Math.atan2(dy, dx);
-                    this.x += Math.cos(angle) * force * 5;
-                    this.y += Math.sin(angle) * force * 5;
-                }
-
-                if (this.y < -50) {
-                    this.reset();
-                }
-            }
-            draw() {
-                ctx.save();
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(112, 193, 255, ${this.opacity})`;
-                ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity + 0.3})`;
-                ctx.lineWidth = 1.5;
-                ctx.fill();
-                ctx.stroke();
-
-                // Specular highlight for 3D soap bubble effect
-                ctx.beginPath();
-                ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.25, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity + 0.4})`;
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function initBubbles() {
-            bubbles = [];
-            let count = Math.floor((width * height) / 25000);
-            for (let i = 0; i < count; i++) {
-                let b = new Bubble();
-                b.y = Math.random() * height; // initial random spread
-                bubbles.push(b);
-            }
-        }
-        initBubbles();
-
-        function animateBubbles() {
-            ctx.clearRect(0, 0, width, height);
-            bubbles.forEach(b => {
-                b.update();
-                b.draw();
+        // 1. Tab Switching Functionality
+        function switchTab(tabId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.tab-page');
+            pages.forEach(page => {
+                page.classList.add('hidden');
             });
-            requestAnimationFrame(animateBubbles);
-        }
-        animateBubbles();
 
-        /* --- 2. Mobile Menu Toggle --- */
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+            // Show selected page
+            const activePage = document.getElementById('page-' + tabId);
+            if(activePage) {
+                activePage.classList.remove('hidden');
+            }
 
-        menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-        closeMenu.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-        /* --- 3. Interactive Squeegee Slider --- */
-        const sliderContainer = document.getElementById('sliderContainer');
-        const beforeImageWrapper = document.getElementById('beforeImageWrapper');
-        const sliderHandle = document.getElementById('sliderHandle');
-        let isDragging = false;
-
-        function updateSlider(clientX) {
-            const rect = sliderContainer.getBoundingClientRect();
-            let x = clientX - rect.left;
-            if (x < 0) x = 0;
-            if (x > rect.width) x = rect.width;
-            let percentage = (x / rect.width) * 100;
-            beforeImageWrapper.style.width = percentage + '%';
-            sliderHandle.style.left = percentage + '%';
-        }
-
-        sliderContainer.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
-
-        sliderContainer.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
-        window.addEventListener('touchend', () => { isDragging = false; });
-        window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
-
-        /* --- 4. Pricing Calculator & Water Cylinder Gauge --- */
-        let basePrice = 350;
-
-        function setPropertyType(type, price) {
-            basePrice = price;
-            document.querySelectorAll('.prop-btn').forEach(btn => {
-                btn.classList.remove('bg-skyFresh', 'text-white');
-                btn.classList.add('bg-white/85', 'text-oceanic');
+            // Update navbar active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
             });
-            event.currentTarget.classList.remove('bg-white/85', 'text-oceanic');
-            event.currentTarget.classList.add('bg-skyFresh', 'text-white');
-            calculatePrice();
+
+            const currentNavLink = document.getElementById('nav-' + tabId);
+            if(currentNavLink) {
+                currentNavLink.classList.add('active');
+            }
+
+            // Scroll top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function calculatePrice() {
-            let beds = parseInt(document.getElementById('bedSlider').value);
-            let baths = parseInt(document.getElementById('bathSlider').value);
-            document.getElementById('bedCountVal').innerText = beds + ' Beds';
-            document.getElementById('bathCountVal').innerText = baths + ' Baths';
-
-            let steamAddon = document.getElementById('addonSteam').checked ? 150 : 0;
-            let marbleAddon = document.getElementById('addonMarble').checked ? 250 : 0;
-
-            let total = basePrice + (beds * 75) + (baths * 50) + steamAddon + marbleAddon;
-            document.getElementById('totalPrice').innerText = 'QAR ' + total;
-
-            // Update water cylinder height (Scale max around 2000 QAR)
-            let heightPercent = Math.min(Math.max((total / 2000) * 100, 15), 95);
-            document.getElementById('waterLevel').style.height = heightPercent + '%';
-        }
-        calculatePrice();
-
-        /* --- 5. Service Modal System --- */
-        const serviceModal = document.getElementById('serviceModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDesc = document.getElementById('modalDesc');
-        const modalDuration = document.getElementById('modalDuration');
-        const modalPrice = document.getElementById('modalPrice');
-
-        function openServiceModal(title, desc, duration, price) {
-            modalTitle.innerText = title;
-            modalDesc.innerText = desc;
-            modalDuration.innerText = duration;
-            modalPrice.innerText = price;
-            serviceModal.classList.remove('hidden');
-            serviceModal.classList.add('flex');
+        // 2. Scroll to Quote section
+        function scrollToQuote() {
+            // Ensure Home tab is active if quote section is accessed from homepage layout
+            const quoteSection = document.getElementById('quote-section');
+            if(quoteSection) {
+                quoteSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        function closeServiceModal() {
-            serviceModal.classList.remove('flex');
-            serviceModal.classList.add('hidden');
+        // 3. Mobile Navigation Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if(menu) {
+                menu.classList.toggle('hidden');
+            }
         }
 
-        window.addEventListener('click', (e) => {
-            if (e.target === serviceModal) closeServiceModal();
-        });
+        // 4. Form Submission Handling (No alert box per rules)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const modal = document.getElementById('toast-modal');
+            if(modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeToast() {
+            const modal = document.getElementById('toast-modal');
+            if(modal) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // 5. Generate Ambient Bubbles Effect dynamically
+        function createBubbles() {
+            const container = document.getElementById('bubbles');
+            if(!container) return;
+
+            const bubbleCount = 12;
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // Randomize sizes, positions, speeds
+                const size = Math.random() * 40 + 15; // 15px to 55px
+                const left = Math.random() * 100; // 0% to 100%
+                const duration = Math.random() * 12 + 10; // 10s to 22s
+                const delay = Math.random() * 5; // 0s to 5s
+
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.animationDuration = `${duration}s`;
+                bubble.style.animationDelay = `${delay}s`;
+
+                container.appendChild(bubble);
+            }
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            createBubbles();
+        };
     </script>
 </body>
 </html>
+```
